@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --vibrant-yellow: #FFFF00;
+  --vibrant-yellow-hover: #E6E600;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--vibrant-yellow);
+  --color-primary-hover: var(--vibrant-yellow-hover);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --radius-none: 0px;
+}
+
+* {
+  border-radius: 0px !important;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  min-height: 100vh;
+}
+
+.mono {
+  font-family: var(--font-mono), monospace;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vibrant-yellow);
+}
