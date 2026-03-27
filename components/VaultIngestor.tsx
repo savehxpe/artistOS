@@ -33,7 +33,7 @@ export default function VaultIngestor({ userId }: VaultIngestorProps) {
 
   const handleUpload = async (file: File) => {
     setIsUploading(true);
-    setStatus("EXTRACTING_METADATA...");
+    setStatus("Extracting metadata...");
     
     try {
       const metadata = extractMetadata(file);
@@ -52,11 +52,11 @@ export default function VaultIngestor({ userId }: VaultIngestorProps) {
         watermarked: true
       });
       
-      setStatus("UPLOAD_SUCCESSFUL");
+      setStatus("Upload successful");
       setTimeout(() => setStatus(null), 3000);
     } catch (error) {
       console.error(error);
-      setStatus("UPLOAD_FAILED");
+      setStatus("Upload failed");
     } finally {
       setIsUploading(false);
     }
@@ -67,32 +67,27 @@ export default function VaultIngestor({ userId }: VaultIngestorProps) {
       onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
       onDragLeave={() => setIsDragging(false)}
       onDrop={onDrop}
-      className={`w-full h-full flex flex-col items-center justify-center text-center transition-all duration-500 relative overflow-hidden group border-4 border-dashed ${
-        isDragging ? "bg-vibrant-yellow border-black" : "bg-transparent border-black/10 hover:border-black/30"
+      className={`w-full h-full flex flex-col items-center justify-center text-center transition-all duration-700 relative overflow-hidden group border-2 border-dashed rounded-none ${
+        isDragging ? "bg-white/10 border-white" : "bg-zinc-950/50 border-white/10 hover:border-white/30"
       }`}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity" 
-           style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, black 1px, transparent 0)', backgroundSize: '20px 20px' }}></div>
-
-      <div className="relative z-10">
-        <div className={`w-20 h-20 mb-6 mx-auto flex items-center justify-center border-2 border-black transition-all ${isDragging || isUploading ? 'bg-black text-vibrant-yellow scale-110 rotate-90' : 'bg-vibrant-yellow text-black'}`}>
-          <span className="material-symbols-outlined text-4xl font-black">
-            {isUploading ? "sync" : "upload_file"}
+      <div className="relative z-10 p-8">
+        <div className={`w-20 h-20 mb-6 mx-auto flex items-center justify-center border transition-all rounded-full ${isDragging || isUploading ? 'bg-white text-black scale-110 shadow-[0_0_30px_rgba(255,255,255,0.2)]' : 'bg-black border-white/10 text-white/40 group-hover:border-white group-hover:text-white'}`}>
+          <span className={`material-symbols-outlined text-3xl transition-transform duration-500 ${isUploading ? 'animate-spin' : ''}`}>
+            {isUploading ? "sync" : "cloud_upload"}
           </span>
         </div>
         
-        <h3 className="font-manrope font-black text-2xl tracking-tighter uppercase mb-2">VAULT_INGESTOR</h3>
-        <p className="font-inter text-[10px] font-black tracking-[0.3em] text-black/40 uppercase mb-8">DROP_RAW_ASSETS_HERE</p>
+        <h3 className="font-manrope font-bold text-2xl tracking-tight mb-2">Vault Ingestor</h3>
+        <p className="font-inter text-[10px] font-bold tracking-[0.3em] text-white/20 uppercase mb-8">Drop raw assets here</p>
         
         {status ? (
-          <div className="bg-black text-vibrant-yellow px-4 py-2 font-inter text-[10px] font-black uppercase tracking-widest animate-pulse border-2 border-vibrant-yellow">
+          <div className="bg-white text-black px-6 py-3 font-inter text-[10px] font-bold uppercase tracking-widest rounded-full animate-in zoom-in-95 duration-300">
             {status}
           </div>
         ) : (
-          <div className="flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-             <p className="font-inter text-[8px] font-black text-black/60 uppercase">AUTO_EXTRACT: TEMPO / ENERGY / DANCE</p>
-             <p className="font-inter text-[8px] font-black text-red-600 uppercase">ENFORCING: 20%_OUTWORLD_WATERMARK</p>
+          <div className="flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+             <p className="font-inter text-[9px] font-bold text-white/40 uppercase tracking-widest">Auto extract: tempo | energy | dance</p>
           </div>
         )}
       </div>
@@ -105,3 +100,4 @@ export default function VaultIngestor({ userId }: VaultIngestorProps) {
     </div>
   );
 }
+

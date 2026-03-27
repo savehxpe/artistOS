@@ -19,6 +19,7 @@ interface CalendarEvent {
 }
 
 import { withOnboardingGuard } from "../../components/withOnboardingGuard";
+import { OutlandiaLogo } from "../../components/OutlandiaLogo";
 
 function CalendarPage() {
   const router = useRouter();
@@ -112,9 +113,15 @@ function CalendarPage() {
 
   if (loading || !user) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-white font-inter">
-        <div className="w-12 h-12 border-2 border-black border-t-vibrant-yellow animate-spin shadow-[0_0_15px_rgba(255,255,0,0.5)]" />
-        <p className="mt-6 text-[10px] font-black uppercase tracking-[0.4em] text-black/40 animate-pulse">SYNCHRONIZING_CONTENT_TIMELINE</p>
+      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-black font-inter text-white">
+        <div className="w-12 h-1 gap-2 flex items-center">
+            <div className="w-4 h-4 rounded-none bg-white/20 animate-pulse" />
+            <div className="w-4 h-4 rounded-none bg-white/40 animate-pulse [animation-delay:0.1s]" />
+            <div className="w-4 h-4 rounded-none bg-white/60 animate-pulse [animation-delay:0.2s]" />
+        </div>
+        <p className="mt-8 text-[10px] font-medium tracking-widest text-white/40 antialiased">
+          OUTLANDIA
+        </p>
       </div>
     );
   }
@@ -123,37 +130,35 @@ function CalendarPage() {
     <div className="bg-black text-white font-body min-h-screen">
       <main className="max-w-[1400px] mx-auto px-6 pt-32 pb-32 min-h-screen animate-in fade-in duration-1000 slide-in-from-bottom-5">
         {/* Screen Title */}
-        <section className="mb-10">
-          <p className="font-inter text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-2">CONTENT / STRATEGY</p>
-          <div className="flex items-end justify-between">
-            <h2 className="font-manrope font-extrabold text-6xl tracking-tighter border-l-8 border-vibrant-yellow pl-6 uppercase text-white leading-none italic">CALENDAR</h2>
-          </div>
-        </section>
+        <header className="mb-24 flex flex-col items-center text-center">
+          <OutlandiaLogo />
+          <div className="w-12 h-[1px] bg-white/10 mt-8" />
+        </header>
 
-        {/* Selected Event Preview (Hero-style if selected) */}
+        {/* Selected Event Preview */}
         {selectedEvent && (
           <section className="mb-12 group">
-            <div className="relative aspect-video bg-zinc-900 overflow-hidden border-2 border-white shadow-2xl transition-all duration-700 group-hover:shadow-vibrant-yellow/10">
+            <div className="relative aspect-video bg-zinc-950/50 overflow-hidden border border-white/5 shadow-2xl transition-all duration-700 hover:border-white/10 rounded-none">
               <img 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" 
+                className="w-full h-full object-cover transition-all duration-1000" 
                 src={selectedEvent.image || "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=800"} 
                 alt={selectedEvent.title} 
               />
-              <div className="absolute inset-x-0 bottom-0 bg-black/80 backdrop-blur-lg p-8 text-white translate-y-2 group-hover:translate-y-0 transition-all">
+              <div className="absolute inset-x-4 bottom-4 bg-zinc-950/80 backdrop-blur-xl p-8 text-white rounded-none border border-white/5 shadow-2xl transition-all">
                 <div className="flex justify-between items-start mb-4">
-                  <span className="bg-vibrant-yellow text-black px-3 py-1 text-[9px] font-black tracking-widest uppercase border border-black shadow-sm">{selectedEvent.status}</span>
-                  <span className="font-inter text-[10px] font-black uppercase tracking-[0.3em] opacity-40">{selectedEvent.date} @ {selectedEvent.time}</span>
+                  <span className="bg-white text-black px-3 py-1 text-[9px] font-bold tracking-wider rounded-none uppercase">{selectedEvent?.status?.toLowerCase()}</span>
+                  <span className="font-inter text-[10px] font-medium tracking-widest text-white/40">{selectedEvent?.date} @ {selectedEvent?.time}</span>
                 </div>
-                <h3 className="font-manrope font-black text-3xl uppercase tracking-tighter mb-2 group-hover:tracking-tight transition-all">{selectedEvent.title}</h3>
-                <p className="font-inter text-[11px] text-white/50 uppercase tracking-[0.1em] line-clamp-1 group-hover:line-clamp-none transition-all">{selectedEvent.description}</p>
+                <h3 className="font-manrope font-bold text-3xl tracking-tight mb-2">{selectedEvent?.title}</h3>
+                <p className="font-inter text-xs text-white/50 tracking-wide">{selectedEvent?.description}</p>
               </div>
             </div>
-            {selectedEvent.caption && (
-              <div className="mt-6 p-8 bg-zinc-950 border-4 border-white border-dashed relative italic text-xs font-inter text-white/70 group shadow-md hover:shadow-xl transition-all">
-                 <div className="absolute -top-4 -left-4 bg-white text-black p-2 flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform">
+            {selectedEvent?.caption && (
+              <div className="mt-8 p-10 bg-zinc-950 border border-white/10 relative italic text-[11px] font-inter text-white/50 group rounded-none shadow-xl">
+                 <div className="absolute -top-4 -left-4 bg-white text-black w-10 h-10 flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform rounded-none">
                     <span className="material-symbols-outlined text-lg">psychology</span>
                  </div>
-                 <p className="leading-relaxed">"{selectedEvent.caption}"</p>
+                 <p className="leading-relaxed">"{selectedEvent?.caption}"</p>
               </div>
             )}
           </section>
@@ -161,39 +166,39 @@ function CalendarPage() {
 
         {/* Timeline Feed */}
         <div className="space-y-8">
-          <div className="flex justify-between items-end border-b-4 border-white pb-4">
-            <h3 className="font-manrope font-black text-sm uppercase tracking-[0.5em] text-white">SCHEDULED_ROLLOUTS</h3>
+          <div className="flex justify-between items-end border-b border-white/5 pb-4">
+            <h3 className="font-manrope font-bold text-[10px] tracking-widest text-zinc-500 uppercase">Upcoming events</h3>
             <div className="flex items-center gap-2">
-               <span className="font-inter text-[9px] font-black uppercase tracking-widest text-white/20">ORDER: CHRONO</span>
-               <button className="material-symbols-outlined text-white/20 hover:text-white active:scale-90 transition-all">sort</button>
+               <span className="font-inter text-[9px] font-medium tracking-widest text-zinc-600">Sort by date</span>
+               <button className="material-symbols-outlined text-zinc-600 hover:text-white active:scale-90 transition-all">sort</button>
             </div>
           </div>
 
           <div className="space-y-4">
             {events.length === 0 ? (
-              <div className="py-24 text-center border-4 border-dashed border-white/[0.03] bg-zinc-950">
-                <span className="material-symbols-outlined text-4xl text-white/10 mb-4 font-black">calendar_month</span>
-                <p className="font-inter text-[10px] font-black uppercase tracking-[0.3em] text-white/20">NO_EVENTS_PROGRAMMED</p>
+              <div className="py-24 text-center border border-dashed border-white/5 bg-zinc-950/20 rounded-none backdrop-blur-sm">
+                <span className="material-symbols-outlined text-4xl text-white/5 mb-4 font-black">calendar_month</span>
+                <p className="font-inter text-[11px] font-medium tracking-widest text-zinc-600">No events scheduled</p>
               </div>
             ) : (
               events.map((event) => (
                 <div 
                   key={event.id}
                   onClick={() => setSelectedEvent(event)}
-                  className={`group p-8 border-2 transition-all cursor-pointer flex items-center justify-between hover:shadow-2xl ${selectedEvent?.id === event.id ? "bg-white text-black border-white shadow-2xl translate-x-2" : "bg-black border-white/5 hover:border-white shadow-sm"}`}
+                  className={`group p-8 bento-item transition-all cursor-pointer flex items-center justify-between rounded-none ${selectedEvent?.id === event.id ? "bg-white text-black border-white shadow-xl scale-[1.01]" : "bg-zinc-950/30 border-white/5 hover:border-white/10 shadow-sm"}`}
                 >
                   <div className="flex items-center gap-8">
-                    <div className={`w-16 h-16 flex flex-col items-center justify-center font-manrope font-black transition-all border-2 ${selectedEvent?.id === event.id ? "bg-black text-white border-white" : "bg-zinc-900 border-white/5 text-white/20 group-hover:bg-white group-hover:text-black"}`}>
+                    <div className={`w-16 h-16 flex flex-col items-center justify-center font-manrope font-bold transition-all border rounded-none overflow-hidden ${selectedEvent?.id === event.id ? "bg-black text-white border-black" : "bg-zinc-900/50 border-white/5 text-zinc-400 group-hover:bg-zinc-800"}`}>
                       <span className="text-2xl leading-none">{event.date.split('-')[2]}</span>
-                      <span className="text-[10px] uppercase tracking-widest font-black">{new Date(event.date).toLocaleString('default', { month: 'short' }).toUpperCase()}</span>
+                      <span className="text-[10px] font-semibold tracking-wider uppercase">{new Date(event.date).toLocaleString('default', { month: 'short' })}</span>
                     </div>
                     <div>
-                      <h4 className="font-manrope font-black text-xl uppercase tracking-tighter group-hover:tracking-tight transition-all">{event.title}</h4>
-                      <div className="flex gap-6 mt-2">
-                        <span className={`font-inter text-[10px] font-black uppercase tracking-widest ${selectedEvent?.id === event.id ? "text-black/40" : "text-white/20"}`}>{event.time}</span>
+                      <h4 className="font-manrope font-bold text-xl tracking-tight transition-all">{event.title}</h4>
+                      <div className="flex gap-4 mt-2">
+                        <span className={`font-inter text-[10px] font-medium tracking-widest ${selectedEvent?.id === event.id ? "text-black/40" : "text-zinc-600"}`}>{event.time}</span>
                         <div className="flex gap-2">
                           {event.platforms?.map(p => (
-                            <span key={p} className={`text-[9px] font-black uppercase tracking-[0.1em] px-2 py-0.5 border ${selectedEvent?.id === event.id ? "border-black/10 text-black/30" : "border-white/10 text-white/30"}`}>{p}</span>
+                            <span key={p} className={`text-[9px] font-semibold tracking-wider px-2 py-0.5 border rounded-none transition-colors ${selectedEvent?.id === event.id ? "border-black/5 text-black/30" : "border-white/5 text-zinc-500"}`}>{p?.toLowerCase()}</span>
                           ))}
                         </div>
                       </div>
@@ -204,9 +209,9 @@ function CalendarPage() {
                       e.stopPropagation();
                       deleteEvent(event.id);
                     }}
-                    className={`material-symbols-outlined text-2xl transition-all opacity-0 group-hover:opacity-100 hover:text-red-500 scale-90 hover:scale-110`}
+                    className={`material-symbols-outlined text-sm transition-all opacity-0 group-hover:opacity-100 hover:text-red-400`}
                   >
-                    delete_sweep
+                    delete
                   </button>
                 </div>
               ))
@@ -217,38 +222,31 @@ function CalendarPage() {
         {/* Global Standard FAB */}
         <button 
           onClick={() => setShowAddModal(true)}
-          className="fixed bottom-24 right-6 w-16 h-16 bg-vibrant-yellow text-black flex items-center justify-center shadow-[0_10px_30px_rgba(255,255,0,0.3)] hover:shadow-[0_15px_40px_rgba(255,255,0,0.5)] active:scale-90 transition-all z-40 group border-2 border-white"
+          className="fixed bottom-24 right-6 w-16 h-16 bg-white text-black flex items-center justify-center rounded-none shadow-2xl hover:scale-110 active:scale-90 transition-all z-40 group border border-black/10"
         >
-          <span className="material-symbols-outlined text-4xl font-black group-hover:rotate-90 transition-transform duration-300">add_circle</span>
+          <span className="material-symbols-outlined text-2xl font-bold group-hover:rotate-90 transition-transform duration-300">add</span>
         </button>
 
         {/* Add Modal */}
         {showAddModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-xl animate-in fade-in duration-300">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/95 backdrop-blur-2xl animate-in fade-in duration-500">
             <form 
               onSubmit={handleAddEvent}
-              className="w-full max-w-xl bg-black border-4 border-white p-12 md:p-16 space-y-12 shadow-[0_30px_100px_rgba(0,0,0,1)] animate-in zoom-in-95 duration-300 relative overflow-hidden text-white"
+              className="w-full max-w-xl bg-zinc-950 border border-white/10 p-12 md:p-16 space-y-12 shadow-2xl animate-in zoom-in-95 duration-500 relative overflow-hidden text-white rounded-none"
             >
-              <div className="absolute top-0 left-0 w-full h-2 bg-vibrant-yellow animate-pulse shadow-[0_0_20px_#FFFF00]"></div>
+              <div className="absolute top-0 left-0 w-full h-[1px] bg-white/20"></div>
               
-              <div className="flex items-center justify-between pb-8 border-b-4 border-white">
-                <h3 className="font-manrope font-black uppercase tracking-tighter text-4xl italic">NEW_CONTENT_RELEASE</h3>
-                <button 
-                  type="button"
-                  onClick={() => setShowAddModal(false)}
-                  className="text-white/20 hover:text-white transition-all active:scale-75"
-                >
-                  <span className="material-symbols-outlined text-4xl font-black">close</span>
-                </button>
+              <div className="flex items-center justify-center pb-8 border-b border-white/5">
+                <h3 className="font-manrope font-bold tracking-tight text-3xl">New event</h3>
               </div>
 
               <div className="space-y-10">
                 <div className="space-y-4">
-                  <label className="font-inter text-[10px] font-black uppercase tracking-[0.5em] text-white/20">EVENT_IDENTIFIER</label>
+                  <label className="font-inter text-[10px] font-semibold tracking-widest text-zinc-500 uppercase">Title</label>
                   <input 
                     autoFocus
-                    placeholder="E.G. MV_DROP_PHASE_01"
-                    className="w-full bg-transparent border-b-4 border-white/10 py-8 px-6 text-3xl font-manrope font-black uppercase tracking-tighter focus:outline-none focus:border-vibrant-yellow transition-all placeholder:opacity-5 text-white"
+                    placeholder="Describe the moment..."
+                    className="w-full bg-transparent border-b border-white/10 py-8 px-2 text-3xl font-manrope font-bold tracking-tight focus:outline-none focus:border-white transition-all placeholder:text-zinc-800 text-white"
                     value={newEvent.title}
                     onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
                   />
@@ -256,19 +254,19 @@ function CalendarPage() {
 
                 <div className="grid grid-cols-2 gap-12">
                   <div className="space-y-4">
-                    <label className="font-inter text-[10px] font-black uppercase tracking-[0.5em] text-white/20">TARGET_DATE</label>
+                    <label className="font-inter text-[10px] font-semibold tracking-widest text-zinc-500 uppercase">Date</label>
                     <input 
                       type="date"
-                      className="w-full bg-zinc-900 border-2 border-white/10 p-6 text-[11px] font-black uppercase tracking-widest focus:outline-none focus:border-vibrant-yellow text-white"
+                      className="w-full bg-zinc-900/50 border border-white/5 p-6 text-[11px] font-semibold tracking-wider focus:outline-none focus:border-white/20 text-white rounded-none transition-colors"
                       value={newEvent.date}
                       onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })}
                     />
                   </div>
                   <div className="space-y-4">
-                    <label className="font-inter text-[10px] font-black uppercase tracking-[0.5em] text-white/20">UTC_WINDOW</label>
+                    <label className="font-inter text-[10px] font-semibold tracking-widest text-zinc-500 uppercase">Time</label>
                     <input 
                       type="time"
-                      className="w-full bg-zinc-900 border-2 border-white/10 p-6 text-[11px] font-black uppercase tracking-widest focus:outline-none focus:border-vibrant-yellow text-white"
+                      className="w-full bg-zinc-900/50 border border-white/5 p-6 text-[11px] font-semibold tracking-wider focus:outline-none focus:border-white/20 text-white rounded-none transition-colors"
                       value={newEvent.time}
                       onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
                     />
@@ -276,23 +274,32 @@ function CalendarPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <label className="font-inter text-[10px] font-black uppercase tracking-[0.5em] text-white/20">CREATIVE_SYNOPSIS</label>
+                  <label className="font-inter text-[10px] font-semibold tracking-widest text-zinc-500 uppercase">Strategic notes</label>
                   <textarea 
-                    placeholder="ENTER_STRATEGY_NOTES..."
-                    className="w-full bg-zinc-900 border-2 border-white/10 p-6 text-xs font-inter focus:outline-none focus:border-vibrant-yellow h-32 resize-none leading-relaxed placeholder:opacity-20 text-white"
+                    placeholder="Add vision or context..."
+                    className="w-full bg-zinc-900/50 border border-white/5 p-6 text-xs font-inter focus:outline-none focus:border-white/20 h-32 resize-none leading-relaxed placeholder:text-zinc-800 text-white rounded-none transition-colors"
                     value={newEvent.caption}
                     onChange={(e) => setNewEvent({ ...newEvent, caption: e.target.value })}
                   />
                 </div>
               </div>
 
-              <button 
-                type="submit"
-                className="w-full bg-vibrant-yellow text-black py-10 font-inter font-black uppercase tracking-[0.5em] text-[10px] hover:bg-white transition-all disabled:opacity-30 shadow-[0_0_50px_rgba(255,255,0,0.3)] active:scale-[0.98] mt-6"
-                disabled={!newEvent.title}
-              >
-                INITIALIZE_ROLLOUT_CYCLE
-              </button>
+              <div className="space-y-4">
+                <button 
+                  type="submit"
+                  className="w-full bg-white text-black py-8 font-semibold tracking-widest text-[11px] hover:bg-zinc-200 transition-all disabled:opacity-30 active:scale-[0.98] rounded-none shadow-lg border border-black/10 uppercase"
+                  disabled={!newEvent.title}
+                >
+                  Confirm event
+                </button>
+                <button 
+                  type="button"
+                  onClick={() => setShowAddModal(false)}
+                  className="w-full text-zinc-600 font-semibold tracking-widest text-[10px] hover:text-white transition-all pt-4 uppercase"
+                >
+                  Discard
+                </button>
+              </div>
             </form>
           </div>
         )}

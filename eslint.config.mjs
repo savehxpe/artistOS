@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Ignore macOS metadata files
+    "**/._*",
+    "**/.DS_Store",
   ]),
 ]);
 

@@ -4,21 +4,21 @@ import { useState, useEffect, useMemo } from "react";
 import { auth, db, doc, updateDoc, collection, query, onSnapshot, deleteDoc, orderBy, getDoc } from "../../lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { OutlandiaLogo } from "../../components/OutlandiaLogo";
+import { withOnboardingGuard } from "../../components/withOnboardingGuard";
 
 interface Task {
   id: string;
   text: string;
-  phase: "INGESTION" | "LEGAL" | "CREATION" | "PITCHING" | "LAUNCH";
+  phase: "Ingestion" | "Legal" | "Creation" | "Pitching" | "Launch";
   priority: "High" | "Medium" | "Routine" | "Planning";
-  category: "CORE" | "LEGAL" | "CONTENT" | "STRATEGY" | "DATA";
+  category: "Core" | "Legal" | "Content" | "Strategy" | "Data";
   dueDate: string;
   completed: boolean;
   createdAt: any;
 }
 
-const PHASES = ["INGESTION", "LEGAL", "CREATION", "PITCHING", "LAUNCH"];
-
-import { withOnboardingGuard } from "../../components/withOnboardingGuard";
+const PHASES = ["Ingestion", "Legal", "Creation", "Pitching", "Launch"];
 
 function TaskPage() {
   const router = useRouter();
@@ -26,7 +26,7 @@ function TaskPage() {
   const [loading, setLoading] = useState(true);
   const [initializing, setInitializing] = useState(false);
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [activePhase, setActivePhase] = useState("INGESTION");
+  const [activePhase, setActivePhase] = useState("Ingestion");
   
 
 
@@ -140,11 +140,13 @@ function TaskPage() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-black font-inter text-white">
         <div className="w-12 h-1 gap-2 flex items-center">
-            <div className="w-4 h-4 bg-vibrant-yellow animate-bounce" />
-            <div className="w-4 h-4 bg-white animate-bounce [animation-delay:0.1s]" />
-            <div className="w-4 h-4 bg-vibrant-yellow animate-bounce [animation-delay:0.2s]" />
+            <div className="w-4 h-4 rounded-none bg-white/20 animate-pulse" />
+            <div className="w-4 h-4 rounded-none bg-white/40 animate-pulse [animation-delay:0.1s]" />
+            <div className="w-4 h-4 rounded-none bg-white/60 animate-pulse [animation-delay:0.2s]" />
         </div>
-        <p className="mt-6 text-[10px] font-black uppercase tracking-[0.4em] text-white/40 animate-pulse">EXPANDING_ACTION_ARRAYS</p>
+        <p className="mt-8 text-[10px] font-medium tracking-widest text-white/40 antialiased">
+          OUTLANDIA
+        </p>
       </div>
     );
   }
@@ -152,57 +154,55 @@ function TaskPage() {
 
 
   return (
-    <div className="bg-black text-white font-body min-h-screen pb-32">
-      <main className="max-w-[1400px] mx-auto px-6 pt-32 pb-32 min-h-screen animate-in fade-in duration-1000 slide-in-from-bottom-5">
+    <div className="bg-black text-white font-inter min-h-screen pb-32">
+      <main className="max-w-[1200px] mx-auto px-6 pt-32 pb-32 animate-in fade-in duration-1000">
         
         {/* Header Section */}
-        <section className="mb-12">
-            <div className="flex justify-between items-end mb-8">
-                <div>
-                   <p className="font-inter text-[10px] font-black uppercase tracking-[0.3em] text-vibrant-yellow mb-2">SYSTEM_OPERATIONS // ROLLOUT_STACK</p>
-                   <h2 className="font-manrope font-black text-6xl md:text-8xl tracking-tighter uppercase leading-none italic">MISSION_CONTROL</h2>
+        <header className="mb-24 flex flex-col items-center text-center">
+            <OutlandiaLogo />
+            <div className="w-12 h-[0.5px] bg-white/20 mb-8 mt-4" />
+            <div className="flex flex-col items-center gap-6">
+                <div className="text-center">
+                    <p className="text-[10px] font-medium tracking-widest text-zinc-500 mb-2">Workspace roadmap</p>
+                    <p className="text-6xl font-manrope font-bold tracking-tight mb-2">{stats.progress}%</p>
+                    <p className="text-[10px] font-medium tracking-widest text-zinc-500">Overall completion</p>
                 </div>
-                <div className="text-right hidden md:flex flex-col items-end gap-2">
-                    <p className="font-inter text-[10px] font-black uppercase tracking-[0.3em] text-white/30">GLOBAL_PROGRESS</p>
-                    <p className="font-manrope font-black text-6xl text-vibrant-yellow leading-none">{stats.progress}%</p>
-                    <button 
-                        onClick={handleCompletePhase}
-                        className="mt-4 bg-white/5 border border-white/10 px-4 py-2 text-[8px] font-black uppercase tracking-widest hover:bg-vibrant-yellow hover:text-black transition-all"
-                    >
-                        COMPLETE_PHASE
-                    </button>
-                </div>
+                <button 
+                    onClick={handleCompletePhase}
+                    className="tap-scale border border-white/10 bg-zinc-950/50 hover:bg-zinc-950 hover:border-white/20 text-white px-10 py-5 text-[10px] font-semibold tracking-widest transition-all font-inter rounded-none backdrop-blur-xl mt-8"
+                >
+                    Mark phase complete
+                </button>
             </div>
+        </header>
 
-            {/* Global Progress Bar */}
-            <div className="w-full h-4 bg-white/10 relative overflow-hidden">
-                <div 
-                    className="absolute inset-0 bg-vibrant-yellow transition-all duration-1000 shadow-[0_0_20px_#FFFF00]"
-                    style={{ width: `${stats.progress}%` }}
-                />
-            </div>
-        </section>
+        {/* Global Progress Bar */}
+        <div className="w-full h-px bg-white/10 mb-24 relative overflow-hidden">
+            <div 
+                className="absolute inset-0 bg-white transition-all duration-1000"
+                style={{ width: `${stats.progress}%` }}
+            />
+        </div>
 
-        {/* Phase Navigator - Bento Grid Style */}
-        <section className="mb-12 grid grid-cols-2 md:grid-cols-5 gap-4">
+        {/* Phase Navigator */}
+        <section className="mb-24 grid grid-cols-2 md:grid-cols-5 gap-4">
             {stats.phaseStats.map((ps) => (
                 <button
                     key={ps.phase}
                     onClick={() => setActivePhase(ps.phase)}
-                    className={`bento-item p-4 text-left transition-all active:scale-[0.95] ${activePhase === ps.phase ? 'bg-vibrant-yellow !border-vibrant-yellow' : 'bg-transparent border-white/20'}`}
+                    className={`bento-item p-8 text-left transition-all tap-scale rounded-none ${activePhase === ps.phase ? 'bg-white text-black !border-white shadow-xl' : 'bg-zinc-950/20 border-white/5 hover:bg-zinc-950/40'}`}
                 >
-                    <div className="flex justify-between items-start mb-4">
-                        <p className={`font-inter text-[8px] font-black uppercase tracking-widest ${activePhase === ps.phase ? 'text-black' : 'text-white/40'}`}>PHASE_{PHASES.indexOf(ps.phase) + 1}</p>
-                        {ps.progress === 100 && <span className="material-symbols-outlined text-xs font-black text-black">check_circle</span>}
+                    <div className="flex justify-between items-start mb-16">
+                        <p className={`text-[10px] font-medium tracking-widest ${activePhase === ps.phase ? 'text-black/40' : 'text-zinc-600'}`}>0{PHASES.indexOf(ps.phase) + 1}</p>
+                        {ps.progress === 100 && <span className="material-symbols-outlined text-sm">done_all</span>}
                     </div>
-                    <h3 className={`font-manrope font-black text-xs uppercase tracking-tighter mb-2 ${activePhase === ps.phase ? 'text-black' : 'text-white'}`}>{ps.phase}</h3>
-                    <div className={`w-full h-1 ${activePhase === ps.phase ? 'bg-black/20' : 'bg-white/10'}`}>
+                    <h3 className="font-manrope font-bold text-xs tracking-widest mb-4 capitalize">{ps.phase?.toLowerCase()}</h3>
+                    <div className={`w-full h-[1px] ${activePhase === ps.phase ? 'bg-black/10' : 'bg-white/10'} rounded-none overflow-hidden`}>
                         <div 
-                            className={`h-full ${activePhase === ps.phase ? 'bg-black' : 'bg-vibrant-yellow'}`}
+                            className={`h-full ${activePhase === ps.phase ? 'bg-black' : 'bg-white'} transition-all duration-700`}
                             style={{ width: `${ps.progress}%` }}
                         />
                     </div>
-                    <p className={`mt-2 font-inter text-[8px] font-black ${activePhase === ps.phase ? 'text-black/60' : 'text-white/20'}`}>{ps.completed}/{ps.total} COMPLETED</p>
                 </button>
             ))}
         </section>
@@ -210,51 +210,50 @@ function TaskPage() {
         {/* Task Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {(tasksByPhase[activePhase] || []).length === 0 ? (
-            <div className="col-span-full py-32 text-center border-4 border-dashed border-white/10 bg-white/5">
-              <span className="material-symbols-outlined text-4xl text-white/5 mb-4 font-black">inventory_2</span>
-              <p className="font-inter text-[10px] font-black uppercase tracking-[0.4em] text-white/20">NO_DATA_INGESTED_FOR_THIS_PHASE</p>
+            <div className="col-span-full py-40 text-center border border-dashed border-white/5 rounded-none bg-zinc-950/10 backdrop-blur-sm">
+              <p className="text-[11px] font-medium tracking-widest text-zinc-500">No active focus points for this phase</p>
             </div>
           ) : (
             tasksByPhase[activePhase].map((task) => (
               <div 
                 key={task.id} 
-                className={`bento-item p-6 md:p-8 flex flex-col justify-between gap-6 transition-all duration-300 ${task.completed ? 'opacity-40 grayscale border-white/5' : 'border-white/20 hover:border-vibrant-yellow'}`}
+                className={`bento-item p-10 flex flex-col justify-between gap-12 transition-all duration-500 rounded-none ${task.completed ? 'opacity-20 translate-y-2' : 'border-white/5 bg-zinc-950/30 hover:border-white/20 shadow-lg'}`}
               >
-                <div className="space-y-4">
+                <div className="space-y-8">
                     <div className="flex justify-between items-start">
                         <div className="flex gap-2">
-                             <span className={`px-2 py-0.5 font-inter text-[8px] font-black tracking-widest border ${task.completed ? 'border-white/10 text-white/30' : 'bg-vibrant-yellow border-vibrant-yellow text-black shadow-[0_0_10px_#FFFF00]'}`}>
-                                {task.priority.toUpperCase()}
+                             <span className={`px-3 py-1 text-[9px] font-semibold tracking-wider border rounded-none transition-colors ${task.completed ? 'border-white/5 text-white/10' : 'bg-zinc-900 border-white/10 text-zinc-400'}`}>
+                                {task.priority}
                             </span>
-                            <span className="px-2 py-0.5 font-inter text-[8px] font-black tracking-widest border border-white/10 text-white/40 uppercase">
+                             <span className="px-3 py-1 text-[9px] font-semibold tracking-wider border border-white/5 text-white/20 rounded-none">
                                 {task.category}
                             </span>
                         </div>
                         <button 
                             onClick={() => toggleTask(task)}
-                            className={`w-10 h-10 border-2 flex items-center justify-center transition-all active:scale-[0.8] ${task.completed ? 'bg-vibrant-yellow border-vibrant-yellow text-black' : 'border-white/20 hover:border-vibrant-yellow text-white/20 hover:text-vibrant-yellow'}`}
+                            className={`w-12 h-12 border flex items-center justify-center tap-scale transition-all rounded-none ${task.completed ? 'bg-white text-black border-white' : 'border-white/10 hover:border-white/30 text-white/20 hover:text-white'}`}
                         >
-                            <span className="material-symbols-outlined font-black">{task.completed ? 'check' : 'radio_button_unchecked'}</span>
+                            <span className="material-symbols-outlined text-lg">{task.completed ? 'check_circle' : 'circle'}</span>
                         </button>
                     </div>
                     
-                    <h3 className={`font-manrope font-black text-2xl uppercase tracking-tighter leading-tight ${task.completed ? 'line-through' : ''}`}>
+                    <h3 className={`font-manrope font-bold text-3xl tracking-tight leading-tight transition-all ${task.completed ? 'line-through opacity-40' : 'text-white'}`}>
                         {task.text}
                     </h3>
                 </div>
 
-                <div className="flex items-end justify-between pt-6 border-t border-white/5">
+                <div className="flex items-end justify-between pt-8 border-t border-white/5">
                     <div>
-                        <p className="font-inter text-[8px] font-black text-white/20 uppercase tracking-widest mb-1">TARGET_DEADLINE</p>
-                        <p className={`font-manrope font-black text-sm ${task.completed ? 'text-white/40' : 'text-vibrant-yellow'}`}>
-                            {new Date(task.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase()}
+                        <p className="text-[9px] font-medium text-zinc-600 tracking-widest mb-2">Deadline</p>
+                        <p className={`font-manrope font-semibold text-xs tracking-wide ${task.completed ? 'text-zinc-700' : 'text-white'}`}>
+                            {new Date(task.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </p>
                     </div>
                     <button 
                         onClick={() => deleteTask(task.id)}
-                        className="p-2 text-white/10 hover:text-red-500 transition-colors"
+                        className="text-[10px] font-medium text-white/20 hover:text-red-400 transition-colors tracking-widest"
                     >
-                        <span className="material-symbols-outlined text-sm font-black italic underline">PURGE</span>
+                        Delete
                     </button>
                 </div>
               </div>

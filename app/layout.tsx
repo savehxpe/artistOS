@@ -14,8 +14,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ARTIST_OS",
-  description: "Next-generation artist management system",
+  title: "Outlandia",
+  description: "High-end artist operating system for creative management",
 };
 
 export default function RootLayout({

@@ -4,26 +4,26 @@ export default function ArtistStats({ spotify, youtube }: { spotify: any, youtub
   if (!spotify && !youtube) return null;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full animate-in fade-in slide-in-from-bottom-4 duration-1000">
       {spotify && (
-        <div className="bg-black border border-zinc-800 p-6 space-y-4">
+        <div className="bg-zinc-950/50 border border-white/5 p-8 space-y-8 rounded-none backdrop-blur-sm group hover:border-white/10 transition-all">
           <div className="flex items-center justify-between">
-            <h3 className="font-mono text-zinc-500 uppercase tracking-widest text-xs">SPOTIFY SIGNAL</h3>
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            <h3 className="font-inter text-white/20 font-bold uppercase tracking-[0.3em] text-[10px]">Spotify signal</h3>
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
           </div>
-          <div className="space-y-4">
-            <div className="flex justify-between items-baseline">
-              <span className="text-zinc-500 font-mono text-xs uppercase">Followers</span>
-              <span className="text-3xl font-black">{spotify.followers?.total?.toLocaleString()}</span>
+          <div className="space-y-6">
+            <div className="flex flex-col gap-1">
+              <span className="text-white/40 font-inter text-[10px] font-bold uppercase tracking-widest">Followers</span>
+              <span className="text-4xl font-manrope font-bold tracking-tighter">{spotify.followers?.total?.toLocaleString()}</span>
             </div>
-            <div className="flex justify-between items-baseline">
-              <span className="text-zinc-500 font-mono text-xs uppercase">Popularity</span>
-              <span className="text-3xl font-black">{spotify.popularity} / 100</span>
+            <div className="flex flex-col gap-1">
+              <span className="text-white/40 font-inter text-[10px] font-bold uppercase tracking-widest">Popularity</span>
+              <span className="text-4xl font-manrope font-bold tracking-tighter">{spotify.popularity}%</span>
             </div>
             {spotify.name && (
-              <div className="flex justify-between items-baseline pt-4 border-t border-zinc-900">
-                <span className="text-zinc-500 font-mono text-xs uppercase">Artist</span>
-                <span className="text-xl font-bold uppercase truncate max-w-[150px]">{spotify.name}</span>
+              <div className="flex justify-between items-center pt-6 border-t border-white/5">
+                <span className="text-white/20 font-inter text-[10px] font-bold uppercase tracking-widest">Artist</span>
+                <span className="text-sm font-manrope font-bold tracking-tight text-white/80 truncate max-w-[150px]">{spotify.name}</span>
               </div>
             )}
           </div>
@@ -31,23 +31,23 @@ export default function ArtistStats({ spotify, youtube }: { spotify: any, youtub
       )}
 
       {youtube && (
-        <div className="bg-black border border-zinc-800 p-6 space-y-4">
+        <div className="bg-zinc-950/50 border border-white/5 p-8 space-y-8 rounded-none backdrop-blur-sm group hover:border-white/10 transition-all">
           <div className="flex items-center justify-between">
-            <h3 className="font-mono text-zinc-500 uppercase tracking-widest text-xs">YOUTUBE SIGNAL</h3>
-            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+            <h3 className="font-inter text-white/20 font-bold uppercase tracking-[0.3em] text-[10px]">YouTube signal</h3>
+            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
           </div>
-          <div className="space-y-4">
-            <div className="flex justify-between items-baseline">
-              <span className="text-zinc-500 font-mono text-xs uppercase">Subscribers</span>
-              <span className="text-3xl font-black">{parseInt(youtube.subscribers).toLocaleString()}</span>
+          <div className="space-y-6">
+            <div className="flex flex-col gap-1">
+              <span className="text-white/40 font-inter text-[10px] font-bold uppercase tracking-widest">Subscribers</span>
+              <span className="text-4xl font-manrope font-bold tracking-tighter">{parseInt(youtube.subscribers).toLocaleString()}</span>
             </div>
-            <div className="flex justify-between items-baseline">
-              <span className="text-zinc-500 font-mono text-xs uppercase">Total Views</span>
-              <span className="text-3xl font-black">{parseInt(youtube.views).toLocaleString()}</span>
+            <div className="flex flex-col gap-1">
+              <span className="text-white/40 font-inter text-[10px] font-bold uppercase tracking-widest">Total views</span>
+              <span className="text-4xl font-manrope font-bold tracking-tighter">{parseInt(youtube.views).toLocaleString()}</span>
             </div>
-            <div className="flex justify-between items-baseline pt-4 border-t border-zinc-900">
-              <span className="text-zinc-500 font-mono text-xs uppercase">Videos</span>
-              <span className="text-xl font-bold">{parseInt(youtube.videos).toLocaleString()}</span>
+            <div className="flex justify-between items-center pt-6 border-t border-white/5">
+              <span className="text-white/20 font-inter text-[10px] font-bold uppercase tracking-widest">Videos</span>
+              <span className="text-sm font-manrope font-bold tracking-tight text-white/80">{parseInt(youtube.videos).toLocaleString()}</span>
             </div>
           </div>
         </div>
@@ -55,3 +55,4 @@ export default function ArtistStats({ spotify, youtube }: { spotify: any, youtub
     </div>
   );
 }
+
