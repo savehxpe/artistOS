@@ -22,13 +22,18 @@ export default function Dashboard() {
       if (currentUser) {
         setUser(currentUser);
         // Load initial data
-        const userDoc = await getDoc(doc(db, "analytics", currentUser.uid));
-        if (userDoc.exists()) {
-          const data = userDoc.data();
-          if (data.spotify) setSpotify(data.spotify);
-          if (data.youtube) setYoutube(data.youtube);
+        try {
+          const userDoc = await getDoc(doc(db, "analytics", currentUser.uid));
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+            if (data.spotify) setSpotify(data.spotify);
+            if (data.youtube) setYoutube(data.youtube);
+          }
+        } catch (error) {
+          console.error("Error fetching analytics:", error);
+        } finally {
+          setLoading(false);
         }
-        setLoading(false);
       } else {
         router.push("/login");
       }
