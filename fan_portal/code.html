@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARTIST_OS | FAN PORTAL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&amp;family=Inter:wght@300;400;600;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-background": "#1a1c1c",
+                        "surface-container-low": "#f3f3f4",
+                        "tertiary-fixed": "#626200",
+                        "outline": "#777777",
+                        "primary-container": "#3e3e00",
+                        "primary-fixed-dim": "#494900",
+                        "surface-container": "#eeeeee",
+                        "inverse-surface": "#2f3131",
+                        "on-tertiary-fixed": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-tint": "#626200",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary-container": "#ffffff",
+                        "on-primary-fixed": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#5e5e5e",
+                        "secondary-fixed": "#c6c6c6",
+                        "inverse-on-surface": "#f0f1f1",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#1b1b1b",
+                        "error-container": "#ffdad6",
+                        "primary": "#000000",
+                        "on-tertiary-fixed-variant": "#FFFF00",
+                        "vibrant-yellow": "#FFFF00",
+                        "surface": "#f9f9f9",
+                        "on-primary": "#FFFF00",
+                        "on-primary-fixed-variant": "#FFFF00",
+                        "on-primary-container": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "tertiary-container": "#797900",
+                        "on-secondary-fixed-variant": "#3b3b3b",
+                        "inverse-primary": "#cdcd00",
+                        "tertiary-fixed-dim": "#494900",
+                        "on-tertiary": "#FFFF00",
+                        "outline-variant": "#c6c6c6",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#3e3e00",
+                        "background": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "primary-fixed": "#626200",
+                        "surface-bright": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed-dim": "#ababab",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "on-surface-variant": "#474747",
+                        "secondary-container": "#d4d4d4",
+                        "on-error-container": "#410002"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background selection:bg-on-primary selection:text-primary overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-black/5 dark:border-white/5">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-black dark:text-white cursor-pointer active:scale-95 transition-transform" data-icon="menu">menu</span>
+<h1 class="font-manrope font-black text-xl tracking-tighter text-black dark:text-white underline decoration-vibrant-yellow decoration-4 underline-offset-4">FAN PORTAL</h1>
+</div>
+<div class="flex items-center">
+<span class="font-manrope uppercase tracking-widest text-sm font-bold text-black dark:text-white border border-black/10 dark:border-white/10 px-3 py-1 bg-vibrant-yellow text-primary">ROLE: ARTIST</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-screen-md mx-auto min-h-screen">
+<!-- Analytics Section -->
+<section class="mb-12">
+<h2 class="font-headline font-extrabold text-sm uppercase tracking-widest mb-6 opacity-40">Live Pulse</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-6 border-l-4 border-vibrant-yellow">
+<p class="font-label text-[10px] font-black uppercase tracking-tighter text-secondary mb-1">Engagement Velocity</p>
+<div class="flex items-baseline gap-2">
+<span class="font-headline font-black text-3xl">94.2%</span>
+<span class="material-symbols-outlined text-vibrant-yellow text-sm" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 border-l-4 border-black">
+<p class="font-label text-[10px] font-black uppercase tracking-tighter text-secondary mb-1">Response Latency</p>
+<div class="flex items-baseline gap-2">
+<span class="font-headline font-black text-3xl">1.2m</span>
+<span class="material-symbols-outlined text-black text-sm" data-icon="timer">timer</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Fan Feedback Feed -->
+<section>
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-headline font-extrabold text-4xl tracking-tighter">Direct Stream</h2>
+<div class="flex gap-2">
+<button class="bg-primary text-on-primary px-3 py-1 text-[10px] font-black uppercase tracking-widest">Filter: Top</button>
+</div>
+</div>
+<div class="space-y-8">
+<!-- Message Card 1 -->
+<div class="group bg-surface-container-lowest p-0 transition-all">
+<div class="flex items-start gap-4 p-6 border-b border-black/5">
+<img alt="" class="w-12 h-12 object-cover grayscale" data-alt="Monochrome portrait of a young man with sharp features looking directly into the camera against a stark white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrYt9AB7CBHd4zRAF6cu6hCKoD3iJOor1DSKWVWKxg5CaAMEhfl0uRViOHO_xLzM3TstPnnt5LzjEVgki39JJ6LaSPVWXuQUyd4tLEGErM8UHYie0EEzUeMs3LeOOaywjjI8XB-9Jnf5EyihTXHYQ93eqwm2bMYywGrx2Nb6nK_aWGqz-Zisz3FlKpYnfuG39K3gWpP5OdqdzYRExwrzyJEVo-YY3xJeUgiRsVkReTbZF-7UdK5oIJe64xViqdxBJkmwOgaFUE86g"/>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<h3 class="font-manrope font-black text-sm uppercase tracking-tighter">@jaxon_v01</h3>
+<span class="font-label text-[10px] opacity-40 uppercase">2m ago</span>
+</div>
+<p class="font-body text-sm leading-relaxed text-on-surface">The visual direction for the new single is insane. Can we expect a physical drop soon? Berlin needs a pop-up.</p>
+</div>
+</div>
+<!-- AI Suggestion Slot -->
+<div class="bg-vibrant-yellow p-6 flex items-center justify-between hover:bg-primary hover:text-on-primary transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lg" data-icon="smart_toy">smart_toy</span>
+<span class="font-label text-[11px] font-black uppercase tracking-widest italic">AI: "Berlin is on the radar. Physicals Q3."</span>
+</div>
+<span class="material-symbols-outlined text-lg" data-icon="send">send</span>
+</div>
+</div>
+<!-- Message Card 2 -->
+<div class="group bg-surface-container-lowest p-0 transition-all">
+<div class="flex items-start gap-4 p-6 border-b border-black/5">
+<img alt="" class="w-12 h-12 object-cover grayscale" data-alt="Close-up profile of a woman with braided hair and silver earrings against a neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCScIxxj6AHGIFpgLOpDi97GxRmi_ixhfoGeAf4iz99lGu1MQqueTb8gnzFODQRVpvM5GCFr6P7v-hOAw-5dsGC38uRoGGWgEcHkd9oXv63YcsXirTrdZEKMP_U23-DTMDIUHf5J7rPftN9yLWwnfHKaqXVzDec7wC7a2PTN8MO0JHQw_hj13liqRTSbiOcKbJn2NUrVjLsEKHhMTHvIZIhAkgjyz_ZdhcXCr2HKYk_y60KADoMyaJUEAkqe6xFeJ2Gc8uSak7cfX4"/>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<h3 class="font-manrope font-black text-sm uppercase tracking-tighter">@elara_lux</h3>
+<span class="font-label text-[10px] opacity-40 uppercase">14m ago</span>
+</div>
+<p class="font-body text-sm leading-relaxed text-on-surface">That acoustic snippet on the story... please tell me that's on the Vault tonight. I've replayed it 50 times.</p>
+</div>
+</div>
+<!-- AI Suggestion Slot -->
+<div class="bg-vibrant-yellow/10 p-6 flex items-center justify-between hover:bg-vibrant-yellow transition-colors cursor-pointer border-t border-black/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lg" data-icon="smart_toy">smart_toy</span>
+<span class="font-label text-[11px] font-black uppercase tracking-widest italic">AI: "Keep an eye on the Vault at midnight EST."</span>
+</div>
+<span class="material-symbols-outlined text-lg" data-icon="send">send</span>
+</div>
+</div>
+<!-- Message Card 3 -->
+<div class="group bg-surface-container-lowest p-0 transition-all">
+<div class="flex items-start gap-4 p-6 border-b border-black/5">
+<div class="w-12 h-12 bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<h3 class="font-manrope font-black text-sm uppercase tracking-widest border border-black/20 px-2 py-0.5 bg-black text-white">TOP FAN: @mister_theory</h3>
+<span class="font-label text-[10px] opacity-40 uppercase">1h ago</span>
+</div>
+<p class="font-body text-sm leading-relaxed text-on-surface">The bridge in 'Static' changed my life. We need the stems for a remix competition.</p>
+</div>
+</div>
+<!-- AI Suggestion Slot -->
+<div class="bg-vibrant-yellow/10 p-6 flex items-center justify-between hover:bg-vibrant-yellow transition-colors cursor-pointer border-t border-black/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lg" data-icon="smart_toy">smart_toy</span>
+<span class="font-label text-[11px] font-black uppercase tracking-widest italic">AI: "Love the remix idea. Forwarding to the EP."</span>
+</div>
+<span class="material-symbols-outlined text-lg" data-icon="send">send</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Career Progress Bar (Custom Component) -->
+<section class="mt-16 bg-surface-container-lowest p-8">
+<div class="flex justify-between items-baseline mb-4">
+<h2 class="font-headline font-black text-xl tracking-tight">FANBASE LOYALTY INDEX</h2>
+<span class="font-label font-black text-sm text-primary italic">Lvl. 88</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-full bg-vibrant-yellow" style="width: 88%"></div>
+</div>
+<p class="font-label text-[9px] uppercase tracking-widest mt-4 opacity-50">Threshold for next tier: 12.4k engagements</p>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white/90 dark:bg-black/90 backdrop-blur-2xl border-t border-black/10 dark:border-white/10 flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-black/50 dark:text-white/50 px-2 py-1 hover:text-black dark:hover:text-white active:opacity-80 transition-opacity" href="../artist_dashboard/code.html">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-inter text-[9px] font-black uppercase tracking-tighter mt-1">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-black/50 dark:text-white/50 px-2 py-1 hover:text-black dark:hover:text-white active:opacity-80 transition-opacity" href="../creative_vault/code.html">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-inter text-[9px] font-black uppercase tracking-tighter mt-1">VAULT</span>
+</a>
+<a class="flex flex-col items-center justify-center text-black/50 dark:text-white/50 px-2 py-1 hover:text-black dark:hover:text-white active:opacity-80 transition-opacity" href="../task_manager/code.html">
+<span class="material-symbols-outlined" data-icon="checklist_rtl">checklist_rtl</span>
+<span class="font-inter text-[9px] font-black uppercase tracking-tighter mt-1">TASKS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-black/50 dark:text-white/50 px-2 py-1 hover:text-black dark:hover:text-white active:opacity-80 transition-opacity" href="../content_calendar/code.html">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-inter text-[9px] font-black uppercase tracking-tighter mt-1">CALENDAR</span>
+</a>
+<!-- Active Tab: PORTAL -->
+<a class="flex flex-col items-center justify-center text-black dark:text-white bg-vibrant-yellow px-2 py-1 active:opacity-80 transition-opacity" href="../fan_portal/code.html">
+<span class="material-symbols-outlined" data-icon="door_open">door_open</span>
+<span class="font-inter text-[9px] font-black uppercase tracking-tighter mt-1">PORTAL</span>
+</a>
+</nav>
+<!-- Floating Action Button (Suppressed on Portal page per instructions, but kept as reference for layout logic if needed on other screens) -->
+</body></html>

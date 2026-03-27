@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&amp;family=Inter:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                "on-background": "#1a1c1c",
+                "surface-container-low": "#f3f3f4",
+                "tertiary-fixed": "#626200",
+                "outline": "#777777",
+                "primary-container": "#3e3e00",
+                "primary-fixed-dim": "#494900",
+                "surface-container": "#eeeeee",
+                "inverse-surface": "#2f3131",
+                "on-tertiary-fixed": "#ffffff",
+                "surface-container-highest": "#e2e2e2",
+                "surface-tint": "#626200",
+                "surface-variant": "#e2e2e2",
+                "on-tertiary-container": "#ffffff",
+                "on-primary-fixed": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "secondary": "#5e5e5e",
+                "secondary-fixed": "#c6c6c6",
+                "inverse-on-surface": "#f0f1f1",
+                "error": "#ba1a1a",
+                "on-secondary-container": "#1b1b1b",
+                "error-container": "#ffdad6",
+                "primary": "#000000",
+                "on-tertiary-fixed-variant": "#eaea00",
+                "surface": "#f9f9f9",
+                "on-primary": "#FFFF00",
+                "vibrant-yellow": "#FFFF00",
+                "on-primary-fixed-variant": "#FFFF00",
+                "on-primary-container": "#ffffff",
+                "on-surface": "#1a1c1c",
+                "tertiary-container": "#797900",
+                "on-secondary-fixed-variant": "#3b3b3b",
+                "inverse-primary": "#cdcd00",
+                "tertiary-fixed-dim": "#494900",
+                "on-tertiary": "#FFFF00",
+                "outline-variant": "#c6c6c6",
+                "on-secondary": "#ffffff",
+                "tertiary": "#3e3e00",
+                "background": "#f9f9f9",
+                "surface-dim": "#dadada",
+                "primary-fixed": "#626200",
+                "surface-bright": "#f9f9f9",
+                "on-error": "#ffffff",
+                "surface-container-high": "#e8e8e8",
+                "secondary-fixed-dim": "#ababab",
+                "on-secondary-fixed": "#1b1b1b",
+                "on-surface-variant": "#474747",
+                "secondary-container": "#d4d4d4",
+                "on-error-container": "#410002"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #000; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-on-primary selection:text-black">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-black/5 dark:border-white/5 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-black dark:text-white">menu</span>
+<h1 class="font-manrope font-black text-xl tracking-tighter text-black dark:text-white">ARTIST_OS</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-manrope uppercase tracking-widest text-sm font-bold text-black dark:text-white">ROLE: EP</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto min-h-screen">
+<!-- Screen Title & Filter Shell -->
+<section class="mb-10">
+<h2 class="font-headline font-extrabold text-5xl tracking-tighter mb-8 border-l-8 border-on-primary pl-4">TASKS</h2>
+<div class="flex flex-wrap gap-2 mb-4">
+<button class="px-4 py-2 bg-black text-vibrant-yellow font-label text-[10px] font-black tracking-widest uppercase transition-transform active:scale-95">ALL</button>
+<button class="px-4 py-2 bg-surface-container-high text-on-surface font-label text-[10px] font-black tracking-widest uppercase hover:bg-vibrant-yellow transition-colors">Artist</button>
+<button class="px-4 py-2 bg-surface-container-high text-on-surface font-label text-[10px] font-black tracking-widest uppercase hover:bg-vibrant-yellow transition-colors">Manager</button>
+<button class="px-4 py-2 bg-surface-container-high text-on-surface font-label text-[10px] font-black tracking-widest uppercase hover:bg-vibrant-yellow transition-colors">EP</button>
+</div>
+</section>
+<!-- Task List -->
+<div class="space-y-4">
+<!-- Task Item: High Priority -->
+<div class="group relative bg-white dark:bg-black p-6 border-l-4 border-on-primary shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="flex items-start gap-4">
+<div class="mt-1">
+<div class="w-6 h-6 border-2 border-black dark:border-white flex items-center justify-center cursor-pointer transition-colors active:bg-on-primary">
+<!-- Unchecked state -->
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="bg-on-primary text-black px-2 py-0.5 font-label text-[9px] font-black tracking-tighter uppercase">High Priority</span>
+<span class="font-label text-[10px] text-black/40 dark:text-white/40 font-bold uppercase">Artist</span>
+</div>
+<h3 class="font-headline font-bold text-lg leading-tight mb-2">Review Final Mixes for 'Neon Horizon' LP</h3>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a male music producer in a dimly lit studio environment with soft rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzaDKSOzWx7VbihGy3N7znMPjz2jQRts6nIxXbRUPXuDGu6dcN4UjHOgQDzTcowsvvFiIZSyQgs4MMuwYrZfr6VBS85nQRWIyckOKEzQUS9_tmc9cx1iv6-5bo0Spa3bHA7EN0yqRgPePubNKu5SjnUoG5gggIqopz-g2wxyuwEk-AouNsJz8Wq35uvLVCYVwqCUelQglOAscBoeoQUAOuZV3SclxVOwOywWX3jpGRgGWjXawbN_OhD52l480k09o_cXGH6HLI7uI"/>
+</div>
+<span class="font-label text-xs font-bold uppercase tracking-wide">Marcus Kane</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Task Item: Completed -->
+<div class="group relative bg-surface-container-low p-6 transition-all duration-300">
+<div class="flex items-start gap-4 opacity-60">
+<div class="mt-1">
+<div class="w-6 h-6 bg-on-primary border-2 border-on-primary flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-black text-sm" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="bg-surface-container-highest text-black/50 px-2 py-0.5 font-label text-[9px] font-black tracking-tighter uppercase">Routine</span>
+<span class="font-label text-[10px] text-black/40 dark:text-white/40 font-bold uppercase">Manager</span>
+</div>
+<h3 class="font-headline font-bold text-lg leading-tight mb-2 line-through">Confirm Press Kit Assets</h3>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional female studio manager with hair tied back, neutral background, editorial fashion style photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJyAQLQtm4o7BRwAEC2p1HNe-eeQzAvaCPhKbcXfPpBGWfAW54lG56bL9uUzGX9kQ7L-mBwy448I0vweI7pdrbYPwg1xNcg0e2a62dnOatNQ3995ewfkNS5tNBlXql-9w6qVWyWVJ6McLES2MJkicmoEHn1J0l3TbQ0IKBh8dZt0v42yrm15zeNU-x3R-JI9Hkf7G5x-03EeD1OUsVgrJ_h95pjgSyNOeACOhU-7WZzRnEXNkvtp3LwL2dUmzvotIQcEGCmAIh1Eo"/>
+</div>
+<span class="font-label text-xs font-bold uppercase tracking-wide">Sarah Chen</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Task Item: Regular -->
+<div class="group relative bg-white dark:bg-black p-6 shadow-sm hover:shadow-xl transition-all duration-300 border-l-4 border-transparent hover:border-black dark:hover:border-white">
+<div class="flex items-start gap-4">
+<div class="mt-1">
+<div class="w-6 h-6 border-2 border-black dark:border-white flex items-center justify-center cursor-pointer"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="bg-surface-container-highest text-black px-2 py-0.5 font-label text-[9px] font-black tracking-tighter uppercase">Medium</span>
+<span class="font-label text-[10px] text-black/40 dark:text-white/40 font-bold uppercase">EP</span>
+</div>
+<h3 class="font-headline font-bold text-lg leading-tight mb-2">Approve Tour Visuals Concept</h3>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up of a creative director with glasses, modern minimal aesthetic, monochromatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRnoGkRtLzhbEMe6ip04Laej1YtX8LH-ciOYhD6ARC3edllg5mfvD17XwaE3AWBXhyxAwvxyVKccnb9NmJJlCLD4l7GgsHchsxJ8CgEFPi4nlLp9Vra-zYp7xD_ixbigcSEVcH_M6wzDJCDDhyCii5fZXJoxeD3q9Oc3PMfBKkm6fQd5ZvHpDV02Fe1Redtpr26ajqjby6kf0BAk9fP2L4aQQs-sKuZU7W9N2Q98zVH16hlloXSZdlXLL-UvFTTaInL2jSanpauGc"/>
+</div>
+<span class="font-label text-xs font-bold uppercase tracking-wide">David Vance</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Task Item: High Priority -->
+<div class="group relative bg-white dark:bg-black p-6 border-l-4 border-on-primary shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="flex items-start gap-4">
+<div class="mt-1">
+<div class="w-6 h-6 border-2 border-black dark:border-white flex items-center justify-center cursor-pointer"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="bg-on-primary text-black px-2 py-0.5 font-label text-[9px] font-black tracking-tighter uppercase">High Priority</span>
+<span class="font-label text-[10px] text-black/40 dark:text-white/40 font-bold uppercase">Artist</span>
+</div>
+<h3 class="font-headline font-bold text-lg leading-tight mb-2">Final Vocal Recording - Track 04</h3>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Profile of a musician in shadows, dramatic stage lighting, black and white photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZNPLz8akyUWOzYQDrEhFMuhDPn4clvHiEfg56kznn9N6cLXNCYJkz8UhBZni98HEqJtZqjrbxfQJYygYxDcr2ti-xqhGYml_mQlQiqfRoUWbwZJvZu65mCxC9rAW4fgGVxazkn5GLeSZIX-yj2-AfF-C943wU79847nM5scYISj6z9sPBP97mEZnqtpR3zSlGDv09O0XF0uu2AaZsEPUp8jXq2CaqtqMSCHsMCoFZ-qFR3ckqwL3W2Qz5AX-BHR-SE7KsQdurtEo"/>
+</div>
+<span class="font-label text-xs font-bold uppercase tracking-wide">Marcus Kane</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Task Item: Regular -->
+<div class="group relative bg-white dark:bg-black p-6 shadow-sm hover:shadow-xl transition-all duration-300 border-l-4 border-transparent">
+<div class="flex items-start gap-4">
+<div class="mt-1">
+<div class="w-6 h-6 border-2 border-black dark:border-white flex items-center justify-center cursor-pointer"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="bg-surface-container-highest text-black px-2 py-0.5 font-label text-[9px] font-black tracking-tighter uppercase">Planning</span>
+<span class="font-label text-[10px] text-black/40 dark:text-white/40 font-bold uppercase">Manager</span>
+</div>
+<h3 class="font-headline font-bold text-lg leading-tight mb-2">Draft Q3 Budget Proposal</h3>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Studio manager in bright clean workspace, minimalist office interior, soft diffused light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA17f1OU6g_Q8rAY7VdDnjCKg4HkB4CRiUMosJlMt4C_bDcbziCEKtsBYNzLvFbGOzOBln6NFl83ab32T6H_uW7POJIuOcnSzmtZOmIh-iuLIHK_j5qUAGpj9qvC39jL_ruSp4Or5_NDm8FPL3cGHvY7Cq4p_bhtqhE9KFRL5Vv1kKWe7cLyXpYlR2XbaAEFDh6Xe9RKZH95l6wVRJYXfvonLvJmEf89wr02DZZ8LE7v30PC1LVhdCzwBwFgQSvPrsmUoI4mRW6Hc8"/>
+</div>
+<span class="font-label text-xs font-bold uppercase tracking-wide">Sarah Chen</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Supressed on details/settings but enabled here for task creation) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-on-primary text-black flex items-center justify-center shadow-2xl active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white/90 dark:bg-black/90 backdrop-blur-2xl border-t border-black/10 dark:border-white/10 flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-black/50 dark:text-white/50 px-2 py-1 hover:text-black dark:hover:text-white active:opacity-80 transition-opacity" href="../artist_dashboard/code.html">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-inter text-[9px] font-black uppercase tracking-tighter mt-1">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-black/50 dark:text-white/50 px-2 py-1 hover:text-black dark:hover:text-white active:opacity-80 transition-opacity" href="../creative_vault/code.html">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-inter text-[9px] font-black uppercase tracking-tighter mt-1">VAULT</span>
+</a>
+<!-- Active Tab: TASKS -->
+<a class="flex flex-col items-center justify-center text-black dark:text-white bg-vibrant-yellow px-2 py-1 active:opacity-80 transition-opacity" href="../task_manager/code.html">
+<span class="material-symbols-outlined" data-icon="checklist_rtl">checklist_rtl</span>
+<span class="font-inter text-[9px] font-black uppercase tracking-tighter mt-1">TASKS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-black/50 dark:text-white/50 px-2 py-1 hover:text-black dark:hover:text-white active:opacity-80 transition-opacity" href="../content_calendar/code.html">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-inter text-[9px] font-black uppercase tracking-tighter mt-1">CALENDAR</span>
+</a>
+<a class="flex flex-col items-center justify-center text-black/50 dark:text-white/50 px-2 py-1 hover:text-black dark:hover:text-white active:opacity-80 transition-opacity" href="../fan_portal/code.html">
+<span class="material-symbols-outlined" data-icon="door_open">door_open</span>
+<span class="font-inter text-[9px] font-black uppercase tracking-tighter mt-1">PORTAL</span>
+</a>
+</nav>
+</body></html>

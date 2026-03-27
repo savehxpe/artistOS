@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Artist Team App - Project Roadmap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;600;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#2f3131",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary": "#eaea00",
+                        "tertiary": "#3e3e00",
+                        "on-primary-fixed-variant": "#eaea00",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#d4d4d4",
+                        "primary-container": "#3e3e00",
+                        "outline-variant": "#c6c6c6",
+                        "on-surface-variant": "#474747",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#410002",
+                        "on-secondary-fixed-variant": "#3b3b3b",
+                        "primary": "#000000",
+                        "error": "#ba1a1a",
+                        "on-primary": "#eaea00",
+                        "on-tertiary-fixed-variant": "#eaea00",
+                        "secondary-fixed-dim": "#ababab",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed": "#ffffff",
+                        "on-secondary-container": "#1b1b1b",
+                        "inverse-primary": "#cdcd00",
+                        "on-primary-fixed": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#c6c6c6",
+                        "primary-fixed-dim": "#494900",
+                        "tertiary-container": "#797900",
+                        "surface-container-highest": "#e2e2e2",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f3f3f4",
+                        "tertiary-fixed-dim": "#494900",
+                        "surface": "#f9f9f9",
+                        "outline": "#777777",
+                        "inverse-on-surface": "#f0f1f1",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed": "#626200",
+                        "on-primary-container": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-container": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "surface-tint": "#626200",
+                        "primary-fixed": "#626200",
+                        "on-background": "#1a1c1c",
+                        "secondary": "#5e5e5e"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9f9; color: #1a1c1c; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-20 w-full border-b-0 bg-white/80 dark:bg-black/80 backdrop-blur-xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<span class="text-2xl font-black text-black dark:text-white tracking-tighter uppercase font-['Manrope']">ARTIST_OS</span>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 font-['Manrope'] font-bold uppercase tracking-widest text-xs hover:opacity-80 transition-opacity">
+            SWITCH ROLE
+        </button>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Header Section -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<p class="font-label text-xs font-black uppercase tracking-[0.2rem] text-primary mb-2">Q4 Release Cycle</p>
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-none">ROADMAP</h1>
+</div>
+<div class="flex flex-col gap-4 items-start md:items-end">
+<button class="bg-yellow-400 text-black px-8 py-4 font-black uppercase tracking-widest text-sm flex items-center gap-3 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+                        CREATE MILESTONE
+                    </button>
+</div>
+</div>
+</section>
+<!-- AI Suggestion Banner -->
+<section class="mb-16 p-8 bg-black text-white relative overflow-hidden">
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-start gap-6">
+<div class="bg-yellow-400 text-black p-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h3 class="text-xl font-bold uppercase tracking-tight mb-1">AI STRATEGY ENGINE</h3>
+<p class="text-zinc-400 text-sm max-w-md">Optimize your Spotify trajectory. Based on current milestones, we've identified potential gaps in your distribution phase.</p>
+</div>
+</div>
+<button class="border border-yellow-400 text-yellow-400 px-6 py-3 font-bold text-xs uppercase tracking-widest hover:bg-yellow-400 hover:text-black transition-colors">
+                    Suggest 3 missing steps
+                </button>
+</div>
+<!-- Decorative "Gallery Tape" element -->
+<div class="absolute right-[-20px] top-[-20px] w-24 h-24 bg-yellow-400 rotate-45 opacity-20"></div>
+</section>
+<!-- Roadmap Timeline View -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Timeline Sidebar / Month Markers -->
+<aside class="lg:col-span-1 hidden lg:flex flex-col border-r border-outline-variant/15 py-4">
+<div class="sticky top-28 flex flex-col gap-24">
+<div class="rotate-[-90deg] origin-center whitespace-nowrap">
+<span class="text-4xl font-black text-outline-variant tracking-tighter uppercase">OCTOBER</span>
+</div>
+<div class="rotate-[-90deg] origin-center whitespace-nowrap">
+<span class="text-4xl font-black text-primary tracking-tighter uppercase">NOVEMBER</span>
+</div>
+<div class="rotate-[-90deg] origin-center whitespace-nowrap">
+<span class="text-4xl font-black text-outline-variant tracking-tighter uppercase">DECEMBER</span>
+</div>
+</div>
+</aside>
+<!-- Vertical Timeline Content -->
+<div class="lg:col-span-11 space-y-12 relative">
+<!-- Center Line -->
+<div class="absolute left-0 lg:left-8 top-0 bottom-0 w-px bg-outline-variant/30 hidden md:block"></div>
+<!-- Milestone 1: Done -->
+<div class="relative pl-0 md:pl-20 group">
+<div class="absolute left-[-4px] md:left-6 top-2 w-3 h-3 bg-black hidden md:block"></div>
+<div class="bg-surface-container-low p-8 flex flex-col md:flex-row gap-8 transition-colors hover:bg-surface-container-high">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-black text-on-primary px-2 py-0.5 text-[10px] font-black uppercase">COMPLETED</span>
+<span class="text-[10px] font-black uppercase tracking-widest opacity-50">OCT 12 — RECORDING</span>
+</div>
+<h2 class="text-3xl font-black mb-4 uppercase tracking-tight">Final Vocal Tracking</h2>
+<p class="text-sm text-on-surface-variant max-with-prose leading-relaxed">Studio session at Electric Lady. Lead vocals and harmonies for "Midnight Static".</p>
+</div>
+<div class="flex flex-col justify-between items-end gap-4 min-w-[200px]">
+<div class="flex items-center gap-2">
+<div class="text-right">
+<p class="text-[10px] font-black uppercase opacity-40">OWNER</p>
+<p class="text-sm font-bold">Artist</p>
+</div>
+<div class="w-10 h-10 bg-zinc-200">
+<img class="w-full h-full object-cover" data-alt="portrait of a confident woman with short dark hair in high contrast monochrome studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC2ws7GWcIhXOJhngcZqywiOqLGrDPuXSkpPAks1CV_qCRwcJGcFL_kie4GtVTTH8A_Uwf0hoxVVw_zyOWkHtU_qLsT0-6mFa8WcQMLR9E3DWL8dFo22AgEYJZ_OLYa3DJDNksmzUfBiZPj3fYzNT3P_-9fYvE6gN-3dLyGGcoICSvC2HCscAsHx-06DeukU6Sh0NzEJbmitR3n6oMncJ4cj6P5cJ4FHHRQLiNfSnyE4Lozmj3kJTXVZvipsyvq-jVU9vuxYx7yP4"/>
+</div>
+</div>
+<span class="material-symbols-outlined text-black" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Milestone 2: Active -->
+<div class="relative pl-0 md:pl-20 group">
+<div class="absolute left-[-6px] md:left-[22px] top-2 w-5 h-5 bg-yellow-400 z-10 hidden md:block"></div>
+<div class="bg-surface-container-lowest p-8 flex flex-col md:flex-row gap-8 border-l-4 border-yellow-400 shadow-sm transition-colors hover:bg-white">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-yellow-400 text-black px-2 py-0.5 text-[10px] font-black uppercase">IN PROGRESS</span>
+<span class="text-[10px] font-black uppercase tracking-widest text-primary">NOV 04 — MIXING</span>
+</div>
+<h2 class="text-3xl font-black mb-4 uppercase tracking-tight">Stereo Mix Revision 2</h2>
+<p class="text-sm text-on-surface-variant max-with-prose leading-relaxed">Adjusting low-end punch for festival systems. Waiting on EP feedback on the bridge reverb tails.</p>
+<!-- Artist Progress Indicator -->
+<div class="mt-8 space-y-2">
+<div class="flex justify-between text-[10px] font-black uppercase">
+<span>Phase Completion</span>
+<span>75%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full">
+<div class="h-full bg-yellow-400" style="width: 75%;"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-between items-end gap-4 min-w-[200px]">
+<div class="flex items-center gap-2">
+<div class="text-right">
+<p class="text-[10px] font-black uppercase opacity-40">OWNER</p>
+<p class="text-sm font-bold">EP / Manager</p>
+</div>
+<div class="flex -space-x-2">
+<div class="w-10 h-10 bg-zinc-300 border-2 border-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up headshot of a professional man with beard in black suit against white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIAaVlPjPKoT6gPIhkbXozJyPYyRxp8T6BL645u2K3koo_d22bnCwOVnwO0ds9AJrpoNtji533-cKnw1MWrrzf1wdzBtKdtyQ-T5Ns_tWINo3Rcs2DBihKh0G6y7xUNQyFzPbGJCFPMG-_F3EsXozR0AFY-II4HiFJKySuwg4YZ8KUTDP2EnI0igVF0l7-r5Op6jMXCVcyNNcERWg1Sq4GbI8XNcQkkx61YZiQWMPTsWjU57BS01r3MnGg-9UlCnXx-8PV41egXmE"/>
+</div>
+<div class="w-10 h-10 bg-zinc-400 border-2 border-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="man in denim shirt looking at camera with serious expression black and white photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtwIDgLb4MMMuqE-Bp32DhQNACw_IO06Yw6IC98psjL5fpUeCrneZ9QXyNrklTa7DKGyYlYtr2aCWjPTgyANqXdJs11ytMnEoEFbgIxw8_s3jfIctxBimslfJzLUltJbAj6gvyTdw4Yhzk7c0tDIV5YaeONpDP7S2Pwf2JpQAbqqRcrSQ0d4ZY33ducfzKC2aRVSQVEGohm3rwUK1IrntsRbL4Db3QGKw4W9ldMulape1z9vmAj1ywtu4mi7C-uBkkE4mfL0p3H30"/>
+</div>
+</div>
+</div>
+<button class="text-primary hover:text-yellow-400 transition-colors">
+<span class="material-symbols-outlined text-4xl">pending_actions</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Milestone 3: Upcoming -->
+<div class="relative pl-0 md:pl-20 group opacity-50 hover:opacity-100 transition-opacity">
+<div class="absolute left-[-4px] md:left-6 top-2 w-3 h-3 bg-zinc-300 hidden md:block"></div>
+<div class="bg-surface-container-low p-8 flex flex-col md:flex-row gap-8">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-zinc-300 text-zinc-700 px-2 py-0.5 text-[10px] font-black uppercase">PENDING</span>
+<span class="text-[10px] font-black uppercase tracking-widest opacity-50">NOV 22 — DISTRIBUTION</span>
+</div>
+<h2 class="text-3xl font-black mb-4 uppercase tracking-tight">Metadata Submission</h2>
+<p class="text-sm text-on-surface-variant max-with-prose leading-relaxed">Finalize ISRC codes, credits, and lyrics for DSP ingestion.</p>
+</div>
+<div class="flex flex-col justify-between items-end gap-4 min-w-[200px]">
+<div class="flex items-center gap-2">
+<div class="text-right">
+<p class="text-[10px] font-black uppercase opacity-40">OWNER</p>
+<p class="text-sm font-bold">Manager</p>
+</div>
+<div class="w-10 h-10 bg-zinc-200">
+<img class="w-full h-full object-cover" data-alt="smiling professional woman with brown hair in bright editorial studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_dWs6erRn4WZx_M2Z1x8dhj7b1yWKkSmJea3GE8sLpv15hql9hxKOuMSuAjXXnW4sWKsxpj6m-PoaxcmeVCpL1foUMknoCaMu_HNIWotjqzaFxSweu_s6ubQQ8rKbWzLuRw436hnLnAg_vQXeOvbkFmJrWWoUnhqUDihyEhw_48kOfBWHDzcHbM-jvD8xZgFyfQ_sTfJznuFhVq41Z7_1aZ31gQv-2xY9KBWXtjprI1Qsw96VS3wQ3VCbJzEORjjAYeuaweH1btk"/>
+</div>
+</div>
+<span class="material-symbols-outlined text-zinc-400">schedule</span>
+</div>
+</div>
+</div>
+<!-- Milestone 4: Release Day -->
+<div class="relative pl-0 md:pl-20 group">
+<div class="absolute left-[-4px] md:left-6 top-2 w-3 h-3 bg-black hidden md:block"></div>
+<div class="bg-primary text-on-primary p-8 flex flex-col md:flex-row gap-8">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-yellow-400 text-black px-2 py-0.5 text-[10px] font-black uppercase">CRITICAL</span>
+<span class="text-[10px] font-black uppercase tracking-widest text-on-primary/60">DEC 15 — WORLDWIDE</span>
+</div>
+<h2 class="text-4xl font-black mb-4 uppercase tracking-tighter italic">Release Day</h2>
+<p class="text-sm text-on-primary/80 max-with-prose leading-relaxed">Global rollout. Coordinated social campaign and press release blast.</p>
+</div>
+<div class="flex flex-col justify-center items-end min-w-[200px]">
+<span class="text-6xl font-black tracking-tighter">12.15</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-stretch h-16 bg-white/90 dark:bg-black/90 backdrop-blur-2xl z-50">
+<a class="flex flex-col items-center justify-center text-black dark:text-white px-6 py-2 hover:bg-zinc-100 transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-['Inter'] text-[10px] font-black uppercase tracking-[0.05rem] mt-1">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-black dark:text-white px-6 py-2 hover:bg-zinc-100 transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-['Inter'] text-[10px] font-black uppercase tracking-[0.05rem] mt-1">VAULT</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-yellow-400 text-black px-6 py-2 scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">checklist</span>
+<span class="font-['Inter'] text-[10px] font-black uppercase tracking-[0.05rem] mt-1">TASKS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-black dark:text-white px-6 py-2 hover:bg-zinc-100 transition-colors" href="#">
+<span class="material-symbols-outlined">door_open</span>
+<span class="font-['Inter'] text-[10px] font-black uppercase tracking-[0.05rem] mt-1">PORTAL</span>
+</a>
+</nav>
+<!-- Desktop Navigation Cluster (Shared Components Rule) -->
+<div class="hidden md:flex fixed right-12 top-24 flex-col gap-4 z-40">
+<a class="flex items-center gap-4 px-4 py-2 text-zinc-500 hover:text-black transition-colors group" href="#">
+<span class="font-black text-xs uppercase tracking-widest group-hover:mr-2 transition-all">DASHBOARD</span>
+<span class="material-symbols-outlined">grid_view</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-2 text-zinc-500 hover:text-black transition-colors group" href="#">
+<span class="font-black text-xs uppercase tracking-widest group-hover:mr-2 transition-all">VAULT</span>
+<span class="material-symbols-outlined">inventory_2</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-2 bg-yellow-400 text-black font-bold group" href="#">
+<span class="font-black text-xs uppercase tracking-widest mr-2">TASKS</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">checklist</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-2 text-zinc-500 hover:text-black transition-colors group" href="#">
+<span class="font-black text-xs uppercase tracking-widest group-hover:mr-2 transition-all">PORTAL</span>
+<span class="material-symbols-outlined">door_open</span>
+</a>
+</div>
+</body></html>

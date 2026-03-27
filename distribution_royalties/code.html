@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARTIST_OS | Distribution &amp; Royalties</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;600;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#2f3131",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary": "#eaea00",
+                        "tertiary": "#3e3e00",
+                        "on-primary-fixed-variant": "#eaea00",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#d4d4d4",
+                        "primary-container": "#3e3e00",
+                        "outline-variant": "#c6c6c6",
+                        "on-surface-variant": "#474747",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#410002",
+                        "on-secondary-fixed-variant": "#3b3b3b",
+                        "primary": "#000000",
+                        "error": "#ba1a1a",
+                        "on-primary": "#eaea00",
+                        "on-tertiary-fixed-variant": "#eaea00",
+                        "secondary-fixed-dim": "#ababab",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed": "#ffffff",
+                        "on-secondary-container": "#1b1b1b",
+                        "inverse-primary": "#cdcd00",
+                        "on-primary-fixed": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#c6c6c6",
+                        "primary-fixed-dim": "#494900",
+                        "tertiary-container": "#797900",
+                        "surface-container-highest": "#e2e2e2",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f3f3f4",
+                        "tertiary-fixed-dim": "#494900",
+                        "surface": "#f9f9f9",
+                        "outline": "#777777",
+                        "inverse-on-surface": "#f0f1f1",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed": "#626200",
+                        "on-primary-container": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-container": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "surface-tint": "#626200",
+                        "primary-fixed": "#626200",
+                        "on-background": "#1a1c1c",
+                        "secondary": "#5e5e5e"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b-0 bg-white/80 backdrop-blur-xl flex justify-between items-center px-6 h-20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary flex items-center justify-center text-on-primary font-black overflow-hidden">
+<img alt="User Profile Profile" class="w-full h-full object-cover" data-alt="Professional studio portrait of a music executive in a high-fashion black blazer against a clean white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxg9w2_nKRfH659vLxWnnzdQCvdGL2nZM_otBT-1pwEB-d5uCB9NNBb3QIJP9zGluR6g2x497EE6k3RZhknlfm40S_k16MwSx9CyXZMo50MZJqg2-T7XXuZI5DmlGS8tHIC-T2g8v2t_wTYnLOpxT1dpilhuY18VyTsnBQssPqttdRD7lw5LyZfI4ZcKjrbz9olY6GKq9y0kw4gA9pq-2ZxW_yiazMhJY19K1U8_J_4F2r1N2Zhk2bMz3QcvauYle-Cw43oRkbq9Y"/>
+</div>
+<span class="font-headline uppercase tracking-widest font-bold text-black text-sm">ARTIST_OS</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-headline uppercase tracking-widest font-bold text-black transition-colors hover:text-yellow-400 text-xs" href="#">DASHBOARD</a>
+<a class="font-headline uppercase tracking-widest font-bold text-black transition-colors hover:text-yellow-400 text-xs" href="#">VAULT</a>
+<a class="font-headline uppercase tracking-widest font-bold text-black transition-colors hover:text-yellow-400 text-xs" href="#">TASKS</a>
+<a class="font-headline uppercase tracking-widest font-bold text-black transition-colors hover:text-yellow-400 text-xs" href="#">PORTAL</a>
+</nav>
+<button class="bg-primary text-on-primary px-4 py-2 font-headline text-[10px] font-bold tracking-widest hover:opacity-80 transition-all">
+            SWITCH ROLE
+        </button>
+</header>
+<main class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+<!-- Header Section: Editorial Scale -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="font-label text-[10px] font-black uppercase tracking-[0.2em] text-outline">FINANCIAL OVERVIEW</span>
+<h1 class="font-headline text-6xl md:text-8xl font-black tracking-tighter leading-none mt-2">REVENUE.</h1>
+</div>
+<div class="flex gap-4">
+<button class="bg-[#FFFF00] text-black px-8 py-4 font-headline text-xs font-black tracking-widest uppercase hover:bg-black hover:text-[#FFFF00] transition-colors">
+                        REQUEST BUDGET
+                    </button>
+<button class="bg-black text-[#FFFF00] px-8 py-4 font-headline text-xs font-black tracking-widest uppercase hover:bg-zinc-800 transition-colors">
+                        EXPORT P&amp;L
+                    </button>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Analytics & Performance -->
+<div class="editorial-grid">
+<!-- AI Insights Panel -->
+<div class="col-span-12 md:col-span-4 bg-black p-8 flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-[#FFFF00]">psychology</span>
+<span class="text-[#FFFF00] font-label text-[10px] font-black tracking-widest uppercase">AI Analysis</span>
+</div>
+<p class="text-white text-2xl font-headline font-bold leading-tight">
+                        Platform yield is up <span class="text-[#FFFF00]">12.4%</span> this quarter. Streaming fatigue detected in EU markets; shift marketing spend to LATAM live events.
+                    </p>
+</div>
+<div class="mt-8">
+<div class="h-[2px] w-full bg-zinc-800 mb-4">
+<div class="h-full bg-[#FFFF00] w-3/4"></div>
+</div>
+<span class="text-zinc-500 font-label text-[10px] uppercase tracking-widest">Confidence Score: 94%</span>
+</div>
+</div>
+<!-- Revenue Visualization -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-low p-8 relative overflow-hidden">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h3 class="font-headline text-2xl font-black tracking-tight">MONTHLY PERFORMANCE</h3>
+<p class="text-on-surface-variant font-label text-xs uppercase tracking-widest">Gross Royalties (USD)</p>
+</div>
+<div class="text-right">
+<span class="block font-headline text-4xl font-black">$142,800.00</span>
+<span class="text-green-600 font-label text-[10px] font-bold">+18.2% VS PREV MONTH</span>
+</div>
+</div>
+<!-- Minimal Graph Placeholder -->
+<div class="flex items-end justify-between h-48 gap-2">
+<div class="flex-1 bg-zinc-200 h-1/4 hover:bg-[#FFFF00] transition-colors"></div>
+<div class="flex-1 bg-zinc-200 h-2/5 hover:bg-[#FFFF00] transition-colors"></div>
+<div class="flex-1 bg-zinc-200 h-1/3 hover:bg-[#FFFF00] transition-colors"></div>
+<div class="flex-1 bg-zinc-200 h-3/5 hover:bg-[#FFFF00] transition-colors"></div>
+<div class="flex-1 bg-zinc-200 h-1/2 hover:bg-[#FFFF00] transition-colors"></div>
+<div class="flex-1 bg-black h-4/5 hover:bg-[#FFFF00] transition-colors"></div>
+<div class="flex-1 bg-[#FFFF00] h-full"></div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+<span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span><span>MAY</span><span>JUN</span><span>JUL</span>
+</div>
+</div>
+<!-- Detailed Breakdown Table -->
+<div class="col-span-12 bg-white p-0">
+<div class="p-8 border-b border-zinc-100 flex justify-between items-center">
+<h3 class="font-headline text-2xl font-black tracking-tight uppercase">Distribution Breakdown</h3>
+<div class="flex gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-[#FFFF00]">filter_list</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-[#FFFF00]">search</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-8 py-4 font-label text-[10px] font-black uppercase tracking-widest text-zinc-500">Asset Name</th>
+<th class="px-8 py-4 font-label text-[10px] font-black uppercase tracking-widest text-zinc-500">Platform</th>
+<th class="px-8 py-4 font-label text-[10px] font-black uppercase tracking-widest text-zinc-500">Territory</th>
+<th class="px-8 py-4 font-label text-[10px] font-black uppercase tracking-widest text-zinc-500">Gross Rev</th>
+<th class="px-8 py-4 font-label text-[10px] font-black uppercase tracking-widest text-zinc-500">Net Share</th>
+<th class="px-8 py-4 font-label text-[10px] font-black uppercase tracking-widest text-zinc-500">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-zinc-100">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6 font-headline font-bold text-sm">Neon Desires (Single)</td>
+<td class="px-8 py-6 font-label text-xs">Spotify, Apple Music</td>
+<td class="px-8 py-6 font-label text-xs">North America</td>
+<td class="px-8 py-6 font-headline font-bold text-sm">$42,500.12</td>
+<td class="px-8 py-6 font-headline font-bold text-sm text-[#797900]">$34,000.10</td>
+<td class="px-8 py-6">
+<span class="bg-black text-white px-2 py-1 text-[9px] font-black uppercase tracking-tighter">Processed</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6 font-headline font-bold text-sm">Concrete Jungle Tour</td>
+<td class="px-8 py-6 font-label text-xs">Live Nation</td>
+<td class="px-8 py-6 font-label text-xs">Global</td>
+<td class="px-8 py-6 font-headline font-bold text-sm">$89,200.00</td>
+<td class="px-8 py-6 font-headline font-bold text-sm text-[#797900]">$62,440.00</td>
+<td class="px-8 py-6">
+<span class="bg-[#FFFF00] text-black px-2 py-1 text-[9px] font-black uppercase tracking-tighter">Pending</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6 font-headline font-bold text-sm">Late Night Sessions EP</td>
+<td class="px-8 py-6 font-label text-xs">Bandcamp, Vinyl</td>
+<td class="px-8 py-6 font-label text-xs">Western Europe</td>
+<td class="px-8 py-6 font-headline font-bold text-sm">$11,100.45</td>
+<td class="px-8 py-6 font-headline font-bold text-sm text-[#797900]">$8,880.36</td>
+<td class="px-8 py-6">
+<span class="bg-black text-white px-2 py-1 text-[9px] font-black uppercase tracking-tighter">Processed</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Secondary Metrics -->
+<div class="col-span-12 md:col-span-6 lg:col-span-3 bg-surface-container-high p-8 flex flex-col justify-between">
+<span class="font-label text-[10px] font-black uppercase tracking-widest text-zinc-500">Unpaid Balance</span>
+<div class="mt-4">
+<h4 class="font-headline text-3xl font-black">$24,102.88</h4>
+<p class="text-[10px] font-bold text-zinc-500 mt-2 uppercase">Payout scheduled for Aug 15</p>
+</div>
+</div>
+<div class="col-span-12 md:col-span-6 lg:col-span-3 bg-surface-container-high p-8 flex flex-col justify-between">
+<span class="font-label text-[10px] font-black uppercase tracking-widest text-zinc-500">Budget Utilization</span>
+<div class="mt-4">
+<h4 class="font-headline text-3xl font-black">68%</h4>
+<div class="h-1 bg-zinc-300 mt-4 overflow-hidden">
+<div class="h-full bg-black w-[68%]"></div>
+</div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-12 lg:col-span-6 bg-[#f3f3f4] p-8 flex items-center justify-between">
+<div>
+<h4 class="font-headline text-lg font-black uppercase tracking-tight">Financial Health Score</h4>
+<p class="text-xs text-zinc-500 max-w-xs mt-1 italic">Based on liquidity, debt-to-revenue ratio, and platform growth metrics.</p>
+</div>
+<div class="relative flex items-center justify-center w-24 h-24">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-zinc-200" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-[#FFFF00]" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="25.12" stroke-width="8"></circle>
+</svg>
+<span class="absolute font-headline font-black text-xl text-black">A+</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-stretch h-16 bg-white/90 backdrop-blur-2xl z-50">
+<div class="flex flex-col items-center justify-center text-black px-6 py-2 transition-all hover:bg-zinc-100 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-body text-[10px] font-black uppercase tracking-[0.05rem] mt-1">DASHBOARD</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-yellow-400 text-black px-6 py-2 transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-body text-[10px] font-black uppercase tracking-[0.05rem] mt-1">VAULT</span>
+</div>
+<div class="flex flex-col items-center justify-center text-black px-6 py-2 transition-all hover:bg-zinc-100 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="checklist">checklist</span>
+<span class="font-body text-[10px] font-black uppercase tracking-[0.05rem] mt-1">TASKS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-black px-6 py-2 transition-all hover:bg-zinc-100 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="door_open">door_open</span>
+<span class="font-body text-[10px] font-black uppercase tracking-[0.05rem] mt-1">PORTAL</span>
+</div>
+</nav>
+</body></html>

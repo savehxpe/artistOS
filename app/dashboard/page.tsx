@@ -86,7 +86,7 @@ export default function Dashboard() {
             <span className="font-mono text-sm uppercase tracking-widest">LIVE_DASHBOARD</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none break-all">
-            {spotify?.name || "COMMAND"} CONTROL<span className="text-white">.</span>
+            {spotify?.name || "ARTIST"} <span className="text-white">OS.</span>
           </h1>
         </div>
         <button 
