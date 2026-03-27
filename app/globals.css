@@ -1,45 +1,104 @@
 @import "tailwindcss";
 
-:root {
-  --background: #000000;
-  --foreground: #ffffff;
-  --vibrant-yellow: #FFFF00;
-  --vibrant-yellow-hover: #E6E600;
+@theme {
+  --color-background: #000000;
+  --color-on-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-on-surface: #000000;
+  --color-primary: #000000;
+  --color-on-primary: #FFFF00;
+  --color-vibrant-yellow: #FFFF00;
+  --color-on-tertiary-fixed-variant: #eaea00;
+  --color-surface-container-low: #f3f3f4;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-highest: #e2e2e2;
+  --color-outline: #000000;
+  --color-outline-variant: #000000;
+
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+
+  --radius-none: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--vibrant-yellow);
-  --color-primary-hover: var(--vibrant-yellow-hover);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --radius-none: 0px;
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --vibrant-yellow: #FFFF00;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 * {
   border-radius: 0px !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-body), sans-serif;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
-.mono {
-  font-family: var(--font-mono), monospace;
+.font-manrope { font-family: "Manrope", sans-serif; }
+.font-inter { font-family: "Inter", sans-serif; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
 }
 
-::-webkit-scrollbar {
-  width: 4px;
+/* Brutalist Bento Patterns */
+.bento-grid {
+  display: grid;
+  gap: 1.5rem;
 }
 
-::-webkit-scrollbar-track {
-  background: #000;
+.bento-item {
+  border: 4px solid black;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--vibrant-yellow);
+.bento-item:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px 0px #FFFF00;
+  z-index: 10;
 }
+
+.bento-item:active {
+  transform: translate(0px, 0px);
+  box-shadow: 0px 0px 0px 0px #000000;
+}
+
+/* Watermark */
+.watermark {
+  position: relative;
+}
+
+.watermark::after {
+  content: "OUTWORLD";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  font-size: 3rem;
+  font-weight: 900;
+  color: black;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 20;
+  white-space: nowrap;
+}
+
