@@ -2,15 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { auth, db, doc, setDoc, getDoc, signOut } from "../../lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import Login from "../../components/Login";
 import SpotifyInput from "../../components/SpotifyInput";
 import YouTubeInput from "../../components/YouTubeInput";
 import ArtistStats from "../../components/ArtistStats";
 import AICaptionComponent from "../../components/AICaptionComponent";
 
 export default function Dashboard() {
+  const router = useRouter();
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [spotify, setSpotify] = useState<any>(null);
@@ -18,8 +19,8 @@ export default function Dashboard() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      setUser(currentUser);
       if (currentUser) {
+        setUser(currentUser);
         // Load initial data
         const userDoc = await getDoc(doc(db, "analytics", currentUser.uid));
         if (userDoc.exists()) {
@@ -27,11 +28,13 @@ export default function Dashboard() {
           if (data.spotify) setSpotify(data.spotify);
           if (data.youtube) setYoutube(data.youtube);
         }
+        setLoading(false);
+      } else {
+        router.push("/login");
       }
-      setLoading(false);
     });
     return () => unsubscribe();
-  }, []);
+  }, [router]);
 
   const saveStats = async (key: string, data: any) => {
     if (!user) return;
@@ -57,39 +60,15 @@ export default function Dashboard() {
 
   const handleLogout = () => {
     signOut(auth);
+    router.push("/login");
   };
 
-  if (loading) {
+  if (loading || !user) {
     return (
       <div className="min-h-screen p-6 flex flex-col items-center justify-center text-center space-y-6">
         <div className="w-16 h-16 border-4 border-white border-t-transparent animate-spin" />
         <p className="font-mono text-xs uppercase tracking-widest text-zinc-500">INITIALIZING SYSTEM...</p>
       </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <main className="min-h-screen flex flex-col">
-        <header className="p-6 md:p-12 border-b border-zinc-800 flex justify-between items-center">
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2 text-white">
-            <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-            <span className="font-mono text-xs uppercase tracking-widest">AWAITING_AUTH</span>
-          </div>
-          <h1 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-none">
-            OUTLANDIA<span className="text-white">.</span>
-          </h1>
-        </div>
-        <Link 
-          href="/" 
-          className="text-zinc-500 hover:text-white transition-colors uppercase font-mono tracking-widest text-xs"
-        >
-          [ BACK ]
-        </Link>
-        </header>
-        <Login />
-      </main>
     );
   }
 
@@ -134,7 +113,7 @@ export default function Dashboard() {
 
       <div className="pt-12 border-t border-zinc-800 text-center opacity-20">
         <p className="font-mono text-xs uppercase tracking-widest leading-none">
-          SYSTEM_ID: {user.uid.slice(0, 8)} // OUTLANDIA // ALL RIGHTS RESERVED
+          SYSTEM_ID: {user?.uid?.slice(0, 8)} // OUTLANDIA // ALL RIGHTS RESERVED
         </p>
       </div>
     </main>

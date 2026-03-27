@@ -1,14 +1,29 @@
 "use client";
 
-import { useState } from "react";
-import { auth, googleProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, doc, setDoc, db } from "../lib/firebase";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { auth, googleProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, doc, setDoc, db } from "../../lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
-export default function Login() {
+export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isSignUP, setIsSignUp] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        router.push("/dashboard");
+      } else {
+        setCheckingAuth(false);
+      }
+    });
+    return () => unsubscribe();
+  }, [router]);
 
   const initUserDoc = async (user: any) => {
     try {
@@ -51,12 +66,21 @@ export default function Login() {
     setLoading(false);
   };
 
+  if (checkingAuth) {
+    return (
+      <div className="min-h-screen p-6 flex flex-col items-center justify-center text-center space-y-6">
+        <div className="w-16 h-16 border-4 border-white border-t-transparent animate-spin" />
+        <p className="font-mono text-xs uppercase tracking-widest text-zinc-500">CHECKING CREDENTIALS...</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center p-6 w-full animate-in fade-in duration-500">
+    <main className="min-h-screen flex flex-col items-center justify-center p-6 animate-in fade-in duration-500">
       <div className="w-full max-w-md bg-black border border-white p-8 space-y-8">
         <div className="space-y-2 text-center">
-          <h2 className="text-3xl font-black uppercase tracking-tight">SECURITY CLEARANCE</h2>
-          <p className="text-zinc-500 font-mono text-xs tracking-widest uppercase">AUTHORIZATION REQUIRED</p>
+          <h1 className="text-3xl font-black uppercase tracking-tight">OUTLANDIA<span className="text-white">.</span></h1>
+          <p className="text-zinc-500 font-mono text-xs tracking-widest uppercase">SECURITY CLEARANCE REQUIRED</p>
         </div>
 
         <form onSubmit={handleEmailAuth} className="space-y-4">
@@ -107,6 +131,12 @@ export default function Login() {
           GOOGLE OAUTH
         </button>
       </div>
-    </div>
+      
+      <div className="mt-8 text-center opacity-30">
+        <p className="font-mono text-xs uppercase tracking-widest leading-none">
+          SYSTEM_ID: OUTLANDIA // ALL RIGHTS RESERVED
+        </p>
+      </div>
+    </main>
   );
 }
