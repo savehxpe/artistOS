@@ -1,73 +1,73 @@
 export interface TaskTemplate {
   text: string;
-  phase: "INGESTION" | "LEGAL" | "CREATION" | "PITCHING" | "LAUNCH";
+  phase: "Ingestion" | "Legal" | "Creation" | "Pitching" | "Launch";
   priority: "High" | "Medium" | "Routine" | "Planning";
-  category: "CORE" | "LEGAL" | "CONTENT" | "STRATEGY" | "DATA";
+  category: "Core" | "Legal" | "Content" | "Strategy" | "Data";
   daysOffset: number; // Days from trigger date
 }
 
 export const ROLLOUT_TEMPLATES: TaskTemplate[] = [
-  // PHASE I: INGESTION (6 Tasks)
-  { text: "UPLOAD RAW MASTERS & WAV STEMS", phase: "INGESTION", priority: "High", category: "CORE", daysOffset: 0 },
-  { text: "GENERATE ACOUSTIC METADATA (BPM/KEY)", phase: "INGESTION", priority: "Medium", category: "DATA", daysOffset: 0 },
-  { text: "APPLY DIGITAL WATERMARKING", phase: "INGESTION", priority: "Routine", category: "LEGAL", daysOffset: 1 },
-  { text: "ORGANIZE MULTI-TRACK REPOSITORY", phase: "INGESTION", priority: "Routine", category: "CORE", daysOffset: 1 },
-  { text: "VERIFY STEM INTEGRITY & PHASE ALIGNMENT", phase: "INGESTION", priority: "Medium", category: "CORE", daysOffset: 2 },
-  { text: "BACKUP TO COLD STORAGE VAULT", phase: "INGESTION", priority: "Routine", category: "DATA", daysOffset: 2 },
+  // PHASE I: Ingestion (6 Tasks)
+  { text: "Ingest Raw Masters & WAV Stems", phase: "Ingestion", priority: "High", category: "Core", daysOffset: 0 },
+  { text: "Generate Acoustic Metadata (BPM/Key)", phase: "Ingestion", priority: "Medium", category: "Data", daysOffset: 0 },
+  { text: "Apply Digital Watermarking", phase: "Ingestion", priority: "Routine", category: "Legal", daysOffset: 1 },
+  { text: "Organize Multi-track Repository", phase: "Ingestion", priority: "Routine", category: "Core", daysOffset: 1 },
+  { text: "Verify Stem Integrity & Phase Alignment", phase: "Ingestion", priority: "Medium", category: "Core", daysOffset: 2 },
+  { text: "Backup to Cold Storage Vault", phase: "Ingestion", priority: "Routine", category: "Data", daysOffset: 2 },
 
-  // PHASE II: LEGAL (12 Tasks)
-  { text: "DRAFT COLLABORATOR SPLIT SHEETS", phase: "LEGAL", priority: "High", category: "LEGAL", daysOffset: 3 },
-  { text: "SECURE PRODUCER CLEARANCES", phase: "LEGAL", priority: "High", category: "LEGAL", daysOffset: 4 },
-  { text: "REGISTER WITH P.R.O. (ASCAP/BMI/SESAC)", phase: "LEGAL", priority: "High", category: "LEGAL", daysOffset: 5 },
-  { text: "GENERATE ISRC & UPC CODES", phase: "LEGAL", priority: "Medium", category: "DATA", daysOffset: 5 },
-  { text: "SUBMIT MECHANICAL LICENSE REQUESTS", phase: "LEGAL", priority: "High", category: "LEGAL", daysOffset: 6 },
-  { text: "FILE COPYRIGHT REGISTRATION (FORM SR)", phase: "LEGAL", priority: "Medium", category: "LEGAL", daysOffset: 7 },
-  { text: "VERIFY METADATA ACCURACY FOR DSPs", phase: "LEGAL", priority: "Medium", category: "DATA", daysOffset: 8 },
-  { text: "SIGN MASTER SYNC WAIVERS", phase: "LEGAL", priority: "Routine", category: "LEGAL", daysOffset: 9 },
-  { text: "SETUP REVENUE SPLITS ON DISTRIBUTOR", phase: "LEGAL", priority: "High", category: "LEGAL", daysOffset: 10 },
-  { text: "AUDIT CONTRACTUAL CREDIT STRINGS", phase: "LEGAL", priority: "Routine", category: "DATA", daysOffset: 11 },
-  { text: "ARCHIVE LEGAL CORRESPONDENCE", phase: "LEGAL", priority: "Routine", category: "LEGAL", daysOffset: 12 },
-  { text: "EXECUTE FINAL LEGAL COMPLIANCE CHECK", phase: "LEGAL", priority: "High", category: "LEGAL", daysOffset: 13 },
+  // PHASE II: Legal (12 Tasks)
+  { text: "Draft Collaborator Split Sheets", phase: "Legal", priority: "High", category: "Legal", daysOffset: 3 },
+  { text: "Secure Producer Clearances", phase: "Legal", priority: "High", category: "Legal", daysOffset: 4 },
+  { text: "Register with P.R.O. (ASCAP/BMI/SESAC)", phase: "Legal", priority: "High", category: "Legal", daysOffset: 5 },
+  { text: "Generate ISRC & UPC Codes", phase: "Legal", priority: "Medium", category: "Data", daysOffset: 5 },
+  { text: "Submit Mechanical License Requests", phase: "Legal", priority: "High", category: "Legal", daysOffset: 6 },
+  { text: "File Copyright Registration (Form SR)", phase: "Legal", priority: "Medium", category: "Legal", daysOffset: 7 },
+  { text: "Verify Metadata Accuracy for DSPs", phase: "Legal", priority: "Medium", category: "Data", daysOffset: 8 },
+  { text: "Sign Master Sync Waivers", phase: "Legal", priority: "Routine", category: "Legal", daysOffset: 9 },
+  { text: "Setup Revenue Splits on Distributor", phase: "Legal", priority: "High", category: "Legal", daysOffset: 10 },
+  { text: "Audit Contractual Credit Strings", phase: "Legal", priority: "Routine", category: "Data", daysOffset: 11 },
+  { text: "Archive Legal Correspondence", phase: "Legal", priority: "Routine", category: "Legal", daysOffset: 12 },
+  { text: "Execute Final Legal Compliance Check", phase: "Legal", priority: "High", category: "Legal", daysOffset: 13 },
 
-  // PHASE III: CREATION (30 Tasks - The Bulk)
-  { text: "GENERATE 15+ TIKTOK HOOK VARIANTS (AI)", phase: "CREATION", priority: "High", category: "CONTENT", daysOffset: 5 },
-  { text: "DRAFT 5 INSTAGRAM REEL CAPTIONS", phase: "CREATION", priority: "Medium", category: "CONTENT", daysOffset: 6 },
-  { text: "EDIT 30-SECOND 'BEHIND THE SCENES' CLIP", phase: "CREATION", priority: "Medium", category: "CONTENT", daysOffset: 7 },
-  { text: "CREATE COVER ART VARIATIONS (SQUARE/STORY)", phase: "CREATION", priority: "High", category: "CONTENT", daysOffset: 8 },
-  { text: "DESIGN SPOTIFY CANVAS ANIMATION", phase: "CREATION", priority: "Medium", category: "CONTENT", daysOffset: 9 },
-  { text: "FILM OFFICIAL MUSIC VIDEO", phase: "CREATION", priority: "High", category: "CONTENT", daysOffset: 10 },
-  { text: "PRODUCE 'LYRIC VIDEO' STATIC ASSETS", phase: "CREATION", priority: "Routine", category: "CONTENT", daysOffset: 11 },
-  { text: "DRAFT EMAIL NEWSLETTER ANNOUNCEMENT", phase: "CREATION", priority: "Routine", category: "STRATEGY", daysOffset: 12 },
-  { text: "SETUP TIKTOK 'SOUND' PRE-SAVE LINK", phase: "CREATION", priority: "High", category: "DATA", daysOffset: 13 },
-  { text: "CREATE PRESS KIT (EPK) UPDATES", phase: "CREATION", priority: "Medium", category: "STRATEGY", daysOffset: 14 },
-  { text: "RECORD SEED VIDEO FOR ADS", phase: "CREATION", priority: "Medium", category: "CONTENT", daysOffset: 15 },
-  { text: "BATCH GENERATE TWITTER THREAD HOOKS", phase: "CREATION", priority: "Routine", category: "CONTENT", daysOffset: 16 },
-  { text: "STORYBOARD 3 INTERACTIVE POLLS", phase: "CREATION", priority: "Routine", category: "CONTENT", daysOffset: 17 },
-  { text: "DESIGN SHOW POSTERS / MERCH MOCKUPS", phase: "CREATION", priority: "Planning", category: "CONTENT", daysOffset: 18 },
-  { text: "CREATE COLOR PALETTE FOR SOCIAL GRID", phase: "CREATION", priority: "Routine", category: "CONTENT", daysOffset: 19 },
-  { text: "DRAFT 'THANK YOU' VIDEO SCRIPTS", phase: "CREATION", priority: "Routine", category: "CONTENT", daysOffset: 20 },
-  { text: "SHOOT HIGH-RES PRESS PHOTOS", phase: "CREATION", priority: "High", category: "CONTENT", daysOffset: 21 },
-  { text: "EDIT DOCUMENTARY STYLE MINI-DOC", phase: "CREATION", priority: "Planning", category: "CONTENT", daysOffset: 22 },
-  { text: "GENERATE AI-ASSISTED PRESS RELEASE", phase: "CREATION", priority: "Medium", category: "STRATEGY", daysOffset: 23 },
-  { text: "CREATE GIPHY STICKERS FOR RELEASE", phase: "CREATION", priority: "Routine", category: "CONTENT", daysOffset: 24 },
-  { text: "DRAFT YOUTUBE DESCRIPTION TEMPLATE", phase: "CREATION", priority: "Routine", category: "DATA", daysOffset: 25 },
-  { text: "ORGANIZE ALL ASSETS IN VAULT", phase: "CREATION", priority: "Medium", category: "CORE", daysOffset: 26 },
-  { text: "RECORD PODCAST INTERVIEW SNIPPETS", phase: "CREATION", priority: "Planning", category: "CONTENT", daysOffset: 27 },
-  { text: "CREATE 15-SEC AD VARIANTS", phase: "CREATION", priority: "Medium", category: "CONTENT", daysOffset: 28 },
-  { text: "EDIT 'MAKING OF' TEASER", phase: "CREATION", priority: "Routine", category: "CONTENT", daysOffset: 29 },
-  { text: "SETUP DISCORD COMMUNITY PREVIEW", phase: "CREATION", priority: "Routine", category: "STRATEGY", daysOffset: 30 },
-  { text: "DESIGN LINKTREE/BIO LINK UPDATE", phase: "CREATION", priority: "Routine", category: "DATA", daysOffset: 31 },
-  { text: "SHOOT RAW VERTICAL CONTENT FOR REELS", phase: "CREATION", priority: "High", category: "CONTENT", daysOffset: 32 },
-  { text: "CREATE 'OUT NOW' MOCKUPS", phase: "CREATION", priority: "Medium", category: "CONTENT", daysOffset: 33 },
-  { text: "FINALIZE CREATIVE ASSET INVENTORY", phase: "CREATION", priority: "High", category: "CORE", daysOffset: 34 },
+  // PHASE III: Creation (30 Tasks - The Bulk)
+  { text: "Generate 15+ TikTok Hook Variants (AI)", phase: "Creation", priority: "High", category: "Content", daysOffset: 5 },
+  { text: "Draft 5 Instagram Reel Captions", phase: "Creation", priority: "Medium", category: "Content", daysOffset: 6 },
+  { text: "Edit 30-second 'Behind the Scenes' Clip", phase: "Creation", priority: "Medium", category: "Content", daysOffset: 7 },
+  { text: "Create Cover Art Variations (Square/Story)", phase: "Creation", priority: "High", category: "Content", daysOffset: 8 },
+  { text: "Design Spotify Canvas Animation", phase: "Creation", priority: "Medium", category: "Content", daysOffset: 9 },
+  { text: "Film Official Music Video", phase: "Creation", priority: "High", category: "Content", daysOffset: 10 },
+  { text: "Produce 'Lyric Video' Static Records", phase: "Creation", priority: "Routine", category: "Content", daysOffset: 11 },
+  { text: "Draft Email Newsletter Announcement", phase: "Creation", priority: "Routine", category: "Strategy", daysOffset: 12 },
+  { text: "Setup TikTok 'Sound' Pre-save Link", phase: "Creation", priority: "High", category: "Data", daysOffset: 13 },
+  { text: "Create Press Kit (EPK) Updates", phase: "Creation", priority: "Medium", category: "Strategy", daysOffset: 14 },
+  { text: "Record Seed Video for Ads", phase: "Creation", priority: "Medium", category: "Content", daysOffset: 15 },
+  { text: "Batch Generate Twitter Thread Hooks", phase: "Creation", priority: "Routine", category: "Content", daysOffset: 16 },
+  { text: "Storyboard 3 Interactive Polls", phase: "Creation", priority: "Routine", category: "Content", daysOffset: 17 },
+  { text: "Design Show Posters / Merch Mockups", phase: "Creation", priority: "Planning", category: "Content", daysOffset: 18 },
+  { text: "Create Color Palette for Social Grid", phase: "Creation", priority: "Routine", category: "Content", daysOffset: 19 },
+  { text: "Draft 'Thank You' Video Scripts", phase: "Creation", priority: "Routine", category: "Content", daysOffset: 20 },
+  { text: "Shoot High-Res Press Photos", phase: "Creation", priority: "High", category: "Content", daysOffset: 21 },
+  { text: "Edit Documentary Style Mini-Doc", phase: "Creation", priority: "Planning", category: "Content", daysOffset: 22 },
+  { text: "Generate AI-Assisted Press Release", phase: "Creation", priority: "Medium", category: "Strategy", daysOffset: 23 },
+  { text: "Create Giphy Stickers for Release", phase: "Creation", priority: "Routine", category: "Content", daysOffset: 24 },
+  { text: "Draft YouTube Description Template", phase: "Creation", priority: "Routine", category: "Data", daysOffset: 25 },
+  { text: "Organize All Records in Vault", phase: "Creation", priority: "Medium", category: "Core", daysOffset: 26 },
+  { text: "Record Podcast Interview Snippets", phase: "Creation", priority: "Planning", category: "Content", daysOffset: 27 },
+  { text: "Create 15-sec Ad Variants", phase: "Creation", priority: "Medium", category: "Content", daysOffset: 28 },
+  { text: "Edit 'Making Of' Teaser", phase: "Creation", priority: "Routine", category: "Content", daysOffset: 29 },
+  { text: "Setup Discord Community Preview", phase: "Creation", priority: "Routine", category: "Strategy", daysOffset: 30 },
+  { text: "Design Linktree/Bio Link Update", phase: "Creation", priority: "Routine", category: "Data", daysOffset: 31 },
+  { text: "Shoot Raw Vertical Content for Reels", phase: "Creation", priority: "High", category: "Content", daysOffset: 32 },
+  { text: "Create 'Out Now' Mockups", phase: "Creation", priority: "Medium", category: "Content", daysOffset: 33 },
+  { text: "Finalize Creative Record Inventory", phase: "Creation", priority: "High", category: "Core", daysOffset: 34 },
 
-  // PHASE IV: PITCHING (4 Tasks)
-  { text: "SUBMIT TO SPOTIFY EDITORIAL (3 WKS OUT)", phase: "PITCHING", priority: "High", category: "STRATEGY", daysOffset: 35 },
-  { text: "SEND EPK TO TARGET BLOGS/PRESS", phase: "PITCHING", priority: "Medium", category: "STRATEGY", daysOffset: 36 },
-  { text: "PITCH TO SOUNDTRACK/SYNC AGENTS", phase: "PITCHING", priority: "Planning", category: "STRATEGY", daysOffset: 37 },
-  { text: "EXECUTE INDEPENDENT PLAYLIST OUTREACH", phase: "PITCHING", priority: "Medium", category: "STRATEGY", daysOffset: 38 },
+  // PHASE IV: Pitching (4 Tasks)
+  { text: "Submit to Spotify Editorial (3 wks out)", phase: "Pitching", priority: "High", category: "Strategy", daysOffset: 35 },
+  { text: "Send EPK to Target Blogs/Press", phase: "Pitching", priority: "Medium", category: "Strategy", daysOffset: 36 },
+  { text: "Pitch to Soundtrack/Sync Agents", phase: "Pitching", priority: "Planning", category: "Strategy", daysOffset: 37 },
+  { text: "Execute Independent Playlist Outreach", phase: "Pitching", priority: "Medium", category: "Strategy", daysOffset: 38 },
 
-  // PHASE V: LAUNCH (2 Tasks)
-  { text: "GO LIVE: DSTRIBUTOR RELEASE TRIGGER", phase: "LAUNCH", priority: "High", category: "CORE", daysOffset: 42 },
-  { text: "EXECUTE 24-HOUR FAN ENGAGEMENT BLITZ", phase: "LAUNCH", priority: "High", category: "STRATEGY", daysOffset: 43 }
+  // PHASE V: Launch (2 Tasks)
+  { text: "Go Live: Distributor Release Trigger", phase: "Launch", priority: "High", category: "Core", daysOffset: 42 },
+  { text: "Execute 24-Hour Fan Engagement Blitz", phase: "Launch", priority: "High", category: "Strategy", daysOffset: 43 }
 ];

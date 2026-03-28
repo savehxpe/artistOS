@@ -44,28 +44,46 @@ export default function AICaptionComponent({ spotify, youtube }: { spotify: any,
   if (!spotify && !youtube) return null;
 
   return (
-    <div className="bg-black border border-white p-6 space-y-4 animate-in fade-in slide-in-from-bottom duration-500">
+    <div className="bg-[#0A0A0A] border border-zinc-900 p-8 rounded-[12px] space-y-6 shadow-2xl font-inter">
       <div className="flex items-center justify-between">
-        <h3 className="font-mono text-zinc-500 uppercase tracking-widest text-xs">AI GENERATION ENGINE</h3>
-        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
+        <h3 className="font-manrope font-bold text-white uppercase tracking-widest text-[10px]">AI Insight Engine</h3>
+        <div className="w-1.5 h-1.5 bg-[#FFFF00] rounded-full animate-pulse shadow-[0_0_10px_rgba(255,255,0,0.5)]" />
       </div>
 
       <button
         onClick={generateCaption}
         disabled={loading}
-        className="w-full bg-white hover:bg-zinc-200 text-black px-6 py-4 font-black uppercase tracking-widest text-sm transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+        className="w-full bg-white hover:bg-[#FFFF00] text-black px-8 py-5 font-manrope font-black uppercase tracking-[0.2em] text-[10px] transition-all disabled:opacity-50 flex items-center justify-center gap-3 rounded-full active:scale-95 shadow-lg"
       >
-        {loading ? "PROCESSING SYNTHESIS..." : "GENERATE CAPTION"}
+        {loading ? (
+          <div className="flex gap-1">
+            <div className="w-1 h-1 bg-black rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+            <div className="w-1 h-1 bg-black rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+            <div className="w-1 h-1 bg-black rounded-full animate-bounce"></div>
+          </div>
+        ) : (
+          <>
+            <span className="material-symbols-outlined text-sm">auto_awesome</span>
+            Generate Hook
+          </>
+        )}
       </button>
 
-      {error && <p className="text-red-500 text-xs font-mono uppercase">{error}</p>}
+      {error && <p className="text-red-900 font-bold text-[9px] uppercase tracking-widest text-center">{error}</p>}
 
       {aiOutput && (
-        <div className="pt-4 border-t border-zinc-900 space-y-2">
-          <p className="font-mono text-xs uppercase tracking-widest text-zinc-600">Generated Output:</p>
-          <div className="p-4 bg-zinc-900 border border-zinc-800 text-white font-mono text-sm leading-relaxed whitespace-pre-wrap">
-            {aiOutput}
+        <div className="pt-6 border-t border-zinc-900 space-y-4 animate-in slide-in-from-top duration-500">
+          <p className="font-manrope font-bold text-[9px] uppercase tracking-widest text-zinc-600">Generated Synthesis:</p>
+          <div className="p-6 bg-black border border-zinc-900 text-white font-inter text-sm italic leading-relaxed whitespace-pre-wrap rounded-[12px] relative overflow-hidden group">
+            <div className="absolute top-0 left-0 w-1 h-full bg-[#FFFF00] opacity-40 group-hover:opacity-100 transition-opacity" />
+            "{aiOutput}"
           </div>
+          <button 
+            onClick={() => navigator.clipboard.writeText(aiOutput)}
+            className="text-[9px] text-[#FFFF00] uppercase tracking-widest font-black flex items-center gap-2 hover:text-white transition-colors"
+          >
+            <span className="material-symbols-outlined text-xs">content_copy</span> Copy to Clipboard
+          </button>
         </div>
       )}
     </div>

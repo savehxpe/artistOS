@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { SpotifyStats } from "../lib/types";
 
-export default function SpotifyInput({ onData }: { onData: (data: any) => void }) {
+export default function SpotifyInput({ onData }: { onData: (data: SpotifyStats) => void }) {
   const [artistUrl, setArtistUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -12,15 +13,19 @@ export default function SpotifyInput({ onData }: { onData: (data: any) => void }
     setError("");
     try {
       const res = await fetch(`/api/spotify?artistUrl=${encodeURIComponent(artistUrl)}`);
-      const data = await res.json();
+      const data: SpotifyStats = await res.json();
       
       if (res.ok) {
         onData(data);
       } else {
-        setError(data.error || "Failed to fetch Spotify stats");
+        setError((data as any).error || "Failed to fetch Spotify stats");
       }
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
     }
     setLoading(false);
   };

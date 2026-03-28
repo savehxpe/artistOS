@@ -48,7 +48,7 @@ function TaskPage() {
         setUser(currentUser);
         
         // Subscribe to tasks
-        const tasksRef = collection(db, "tasks", currentUser.uid, "items");
+        const tasksRef = collection(db, "users", currentUser.uid, "tasks");
         const q = query(tasksRef, orderBy("dueDate", "asc"));
         
         const unsubscribeTasks = onSnapshot(q, (snapshot) => {
@@ -65,7 +65,7 @@ function TaskPage() {
 
         return () => unsubscribeTasks();
       } else {
-        router.push("/login");
+        router.push("/");
       }
     });
     
@@ -77,7 +77,7 @@ function TaskPage() {
   const toggleTask = async (task: Task) => {
     if (!user) return;
     try {
-      const taskRef = doc(db, "tasks", user.uid, "items", task.id);
+      const taskRef = doc(db, "users", user.uid, "tasks", task.id);
       await updateDoc(taskRef, {
         completed: !task.completed
       });
@@ -89,7 +89,7 @@ function TaskPage() {
   const deleteTask = async (taskId: string) => {
     if (!user) return;
     try {
-      await deleteDoc(doc(db, "tasks", user.uid, "items", taskId));
+      await deleteDoc(doc(db, "users", user.uid, "tasks", taskId));
     } catch (err) {
       console.error("Error deleting task:", err);
     }
@@ -100,7 +100,7 @@ function TaskPage() {
     try {
       const pendingTasks = tasksByPhase[activePhase].filter(t => !t.completed);
       const updates = pendingTasks.map(task => {
-        const taskRef = doc(db, "tasks", user.uid, "items", task.id);
+        const taskRef = doc(db, "users", user.uid, "tasks", task.id);
         return updateDoc(taskRef, { completed: true });
       });
       await Promise.all(updates);
@@ -140,9 +140,9 @@ function TaskPage() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-black font-inter text-white">
         <div className="w-12 h-1 gap-2 flex items-center">
-            <div className="w-4 h-4 rounded-none bg-white/20 animate-pulse" />
-            <div className="w-4 h-4 rounded-none bg-white/40 animate-pulse [animation-delay:0.1s]" />
-            <div className="w-4 h-4 rounded-none bg-white/60 animate-pulse [animation-delay:0.2s]" />
+            <div className="w-4 h-4 rounded-full bg-white/20 animate-pulse" />
+            <div className="w-4 h-4 rounded-full bg-white/40 animate-pulse [animation-delay:0.1s]" />
+            <div className="w-4 h-4 rounded-full bg-white/60 animate-pulse [animation-delay:0.2s]" />
         </div>
         <p className="mt-8 text-[10px] font-medium tracking-widest text-white/40 antialiased">
           OUTLANDIA
@@ -163,23 +163,23 @@ function TaskPage() {
             <div className="w-12 h-[0.5px] bg-white/20 mb-8 mt-4" />
             <div className="flex flex-col items-center gap-6">
                 <div className="text-center">
-                    <p className="text-[10px] font-medium tracking-widest text-zinc-500 mb-2">Workspace roadmap</p>
+                    <p className="text-[10px] font-medium tracking-widest text-zinc-500 mb-2 uppercase">Workspace Roadmap</p>
                     <p className="text-6xl font-manrope font-bold tracking-tight mb-2">{stats.progress}%</p>
-                    <p className="text-[10px] font-medium tracking-widest text-zinc-500">Overall completion</p>
+                    <p className="text-[10px] font-medium tracking-widest text-zinc-500 uppercase">Overall Completion</p>
                 </div>
                 <button 
                     onClick={handleCompletePhase}
-                    className="tap-scale border border-white/10 bg-zinc-950/50 hover:bg-zinc-950 hover:border-white/20 text-white px-10 py-5 text-[10px] font-semibold tracking-widest transition-all font-inter rounded-none backdrop-blur-xl mt-8"
+                    className="tap-scale border border-white/10 bg-zinc-950/50 hover:bg-zinc-950 hover:border-white/20 text-white px-10 py-5 text-[10px] font-semibold tracking-widest transition-all font-inter rounded-full backdrop-blur-xl mt-8"
                 >
-                    Mark phase complete
+                    Mark Phase Complete
                 </button>
             </div>
         </header>
 
         {/* Global Progress Bar */}
-        <div className="w-full h-px bg-white/10 mb-24 relative overflow-hidden">
+        <div className="w-full h-2 bg-white/5 mb-24 relative overflow-hidden rounded-full">
             <div 
-                className="absolute inset-0 bg-white transition-all duration-1000"
+                className="absolute inset-y-0 left-0 bg-white transition-all duration-1000 rounded-full"
                 style={{ width: `${stats.progress}%` }}
             />
         </div>
@@ -190,16 +190,16 @@ function TaskPage() {
                 <button
                     key={ps.phase}
                     onClick={() => setActivePhase(ps.phase)}
-                    className={`bento-item p-8 text-left transition-all tap-scale rounded-none ${activePhase === ps.phase ? 'bg-white text-black !border-white shadow-xl' : 'bg-zinc-950/20 border-white/5 hover:bg-zinc-950/40'}`}
+                    className={`bento-item p-8 text-left transition-all tap-scale rounded-3xl ${activePhase === ps.phase ? 'bg-white text-black !border-white shadow-xl' : 'bg-zinc-950/20 border-white/5 hover:bg-zinc-950/40'}`}
                 >
                     <div className="flex justify-between items-start mb-16">
                         <p className={`text-[10px] font-medium tracking-widest ${activePhase === ps.phase ? 'text-black/40' : 'text-zinc-600'}`}>0{PHASES.indexOf(ps.phase) + 1}</p>
                         {ps.progress === 100 && <span className="material-symbols-outlined text-sm">done_all</span>}
                     </div>
-                    <h3 className="font-manrope font-bold text-xs tracking-widest mb-4 capitalize">{ps.phase?.toLowerCase()}</h3>
-                    <div className={`w-full h-[1px] ${activePhase === ps.phase ? 'bg-black/10' : 'bg-white/10'} rounded-none overflow-hidden`}>
+                    <h3 className="font-manrope font-bold text-[10px] tracking-widest mb-4 uppercase">{ps.phase}</h3>
+                    <div className={`w-full h-1 ${activePhase === ps.phase ? 'bg-black/10' : 'bg-white/10'} rounded-full overflow-hidden`}>
                         <div 
-                            className={`h-full ${activePhase === ps.phase ? 'bg-black' : 'bg-white'} transition-all duration-700`}
+                            className={`h-full ${activePhase === ps.phase ? 'bg-black' : 'bg-white'} transition-all duration-700 rounded-full`}
                             style={{ width: `${ps.progress}%` }}
                         />
                     </div>
@@ -210,28 +210,28 @@ function TaskPage() {
         {/* Task Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {(tasksByPhase[activePhase] || []).length === 0 ? (
-            <div className="col-span-full py-40 text-center border border-dashed border-white/5 rounded-none bg-zinc-950/10 backdrop-blur-sm">
+            <div className="col-span-full py-40 text-center border border-dashed border-white/5 rounded-3xl bg-zinc-950/10 backdrop-blur-sm">
               <p className="text-[11px] font-medium tracking-widest text-zinc-500">No active focus points for this phase</p>
             </div>
           ) : (
             tasksByPhase[activePhase].map((task) => (
               <div 
                 key={task.id} 
-                className={`bento-item p-10 flex flex-col justify-between gap-12 transition-all duration-500 rounded-none ${task.completed ? 'opacity-20 translate-y-2' : 'border-white/5 bg-zinc-950/30 hover:border-white/20 shadow-lg'}`}
+                className={`bento-item p-10 flex flex-col justify-between gap-12 transition-all duration-500 rounded-3xl ${task.completed ? 'opacity-20 translate-y-2' : 'border-white/5 bg-zinc-950/30 hover:border-white/20 shadow-lg'}`}
               >
                 <div className="space-y-8">
                     <div className="flex justify-between items-start">
                         <div className="flex gap-2">
-                             <span className={`px-3 py-1 text-[9px] font-semibold tracking-wider border rounded-none transition-colors ${task.completed ? 'border-white/5 text-white/10' : 'bg-zinc-900 border-white/10 text-zinc-400'}`}>
+                             <span className={`px-3 py-1 text-[9px] font-semibold tracking-wider border rounded-xl transition-colors ${task.completed ? 'border-white/5 text-white/10' : 'bg-zinc-900 border-white/10 text-zinc-400'}`}>
                                 {task.priority}
                             </span>
-                             <span className="px-3 py-1 text-[9px] font-semibold tracking-wider border border-white/5 text-white/20 rounded-none">
+                             <span className="px-3 py-1 text-[9px] font-semibold tracking-wider border border-white/5 text-white/20 rounded-xl">
                                 {task.category}
                             </span>
                         </div>
                         <button 
                             onClick={() => toggleTask(task)}
-                            className={`w-12 h-12 border flex items-center justify-center tap-scale transition-all rounded-none ${task.completed ? 'bg-white text-black border-white' : 'border-white/10 hover:border-white/30 text-white/20 hover:text-white'}`}
+                            className={`w-12 h-12 border flex items-center justify-center tap-scale transition-all rounded-full ${task.completed ? 'bg-white text-black border-white' : 'border-white/10 hover:border-white/30 text-white/20 hover:text-white'}`}
                         >
                             <span className="material-symbols-outlined text-lg">{task.completed ? 'check_circle' : 'circle'}</span>
                         </button>
@@ -245,7 +245,7 @@ function TaskPage() {
                 <div className="flex items-end justify-between pt-8 border-t border-white/5">
                     <div>
                         <p className="text-[9px] font-medium text-zinc-600 tracking-widest mb-2">Deadline</p>
-                        <p className={`font-manrope font-semibold text-xs tracking-wide ${task.completed ? 'text-zinc-700' : 'text-white'}`}>
+                        <p className={`font-manrope font-bold text-xs tracking-wide ${task.completed ? 'text-zinc-700' : 'text-white'}`}>
                             {new Date(task.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </p>
                     </div>

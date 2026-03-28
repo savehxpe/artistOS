@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { YouTubeStats } from "../lib/types";
 
-export default function YouTubeInput({ onData }: { onData: (data: any) => void }) {
+export default function YouTubeInput({ onData }: { onData: (data: YouTubeStats) => void }) {
   const [channelId, setChannelId] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -12,15 +13,19 @@ export default function YouTubeInput({ onData }: { onData: (data: any) => void }
     setError("");
     try {
       const res = await fetch(`/api/youtube?channelId=${channelId}`);
-      const data = await res.json();
+      const data: YouTubeStats = await res.json();
       
       if (res.ok) {
         onData(data);
       } else {
-        setError(data.error || "Failed to fetch YouTube stats");
+        setError((data as any).error || "Failed to fetch YouTube stats");
       }
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
     }
     setLoading(false);
   };

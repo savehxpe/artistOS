@@ -1,42 +1,37 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ComponentType } from "react";
 import { useRouter } from "next/navigation";
 import { auth, db, doc, getDoc } from "../lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { SilentSplash } from "./SilentSplash";
 
-export function withOnboardingGuard(WrappedComponent: any) {
-  return function ProtectedRoute(props: any) {
+export function withOnboardingGuard<P extends object>(WrappedComponent: ComponentType<P>) {
+  return function ProtectedRoute(props: P) {
     const router = useRouter();
     const [loading, setLoading] = useState(true);
-    const [accessDenied, setAccessDenied] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, async (user) => {
-        if (!user) {
-          setAccessDenied(true);
-          setTimeout(() => {
-            router.push("/"); 
-          }, 1000);
+      const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+        if (!currentUser) {
+          router.replace("/"); 
           return;
         }
 
         try {
-          const userDoc = await getDoc(doc(db, "users", user.uid));
+          const userDoc = await getDoc(doc(db, "users", currentUser.uid));
           const data = userDoc?.data();
           
-          if (!userDoc.exists() || !data?.onboardingComplete) {
-            setAccessDenied(true);
-            setTimeout(() => {
-              router.push("/onboarding");
-            }, 800);
+          if (!userDoc.exists() || data?.onboardingComplete !== true) {
+            router.replace("/onboarding");
             return;
           }
 
           setIsAuthenticated(true);
         } catch (err) {
-          console.error("Error verifying access:", err);
+          console.error("Auth verification failure:", err);
+          router.replace("/");
         } finally {
           setLoading(false);
         }
@@ -45,22 +40,8 @@ export function withOnboardingGuard(WrappedComponent: any) {
       return () => unsubscribe();
     }, [router]);
 
-    if (accessDenied) {
-      return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black text-[#FFFF00] font-mono text-4xl uppercase tracking-widest font-bold">
-          <div className="animate-pulse">
-            ACCESS_DENIED // UNAUTHORIZED
-          </div>
-        </div>
-      );
-    }
-
     if (loading || !isAuthenticated) {
-      return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black text-white/20 font-mono text-xs uppercase tracking-widest">
-          SECURITY_CHECK // AUTHENTICATING
-        </div>
-      );
+      return <SilentSplash />;
     }
 
     return <WrappedComponent {...props} />;
